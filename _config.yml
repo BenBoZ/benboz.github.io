@@ -2,7 +2,7 @@
 
 title: Spoor.cc
 locale: en_US
-description: Personal site
+description: Personal site not intended for reading.
 logo: site-logo.png
 search: true
 url: https://benboz.github.io/
@@ -37,7 +37,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 # Site owner
 owner:
   name: Ben Spoor
-  avatar: bio-photo.jpg
+  avatar: bio-photo.png
   email: info@spoor.cc
   disqus-shortname: spoorcc
   twitter: bpspoor
