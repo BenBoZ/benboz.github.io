@@ -11,9 +11,6 @@ image:
 
 Hi, look at the picture, thats me! 
 
-![Bio-pic]({{ site.url }}/images/bio-photo.png)
-{: .pull-right}
-
 I love <3 programming, some of my interests:
 
 * C/C++
