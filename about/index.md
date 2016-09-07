@@ -9,7 +9,12 @@ image:
   creditlink: http://www.spoor.cc/
 ---
 
-Hi, look at the picture, thats me! I love <3 programming, some of my interests:
+Hi, look at the picture, thats me! 
+
+![Bio-pic]({{ site.url }}/images/bio-photo.png)
+{: .pull-right}
+
+I love <3 programming, some of my interests:
 
 * C/C++
 * Python
@@ -21,9 +26,6 @@ Hi, look at the picture, thats me! I love <3 programming, some of my interests:
 * Debugging
 
 You can contact me through any of the channels below!
-
-![Bio-pic]({{ site.url }}/images/bio-photo.png)
-{: .pull-right}
 
 
 
