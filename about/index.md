@@ -9,7 +9,7 @@ image:
   creditlink: http://www.spoor.cc/
 ---
 
-I love <3 programming, some of my interests:
+Hi, look at the picture, thats me! I love <3 programming, some of my interests:
 
 * C/C++
 * Python
@@ -19,5 +19,12 @@ I love <3 programming, some of my interests:
 * Vim
 * Regex
 * Debugging
+
+You can contact me through any of the channels below!
+
+![Bio-pic]({{ site.url }}/images/bio-photo.png)
+{: .pull-right}
+
+
 
 
