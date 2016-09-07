@@ -4,12 +4,17 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Passionate programmer, some of my interests:
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+* C/C++
+* Python
+* (Ba)sh
+* VHDL
+* SciLab
+* Vim
+* Regex
+* Debugging
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[info@spoor.cc](mailto:info@spoor.cc)
