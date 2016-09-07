@@ -5,7 +5,7 @@ locale: en_US
 description: Personal site
 logo: site-logo.png
 search: true
-url: http://www.spoor.cc
+url: https://benboz.github.io/
 
 # Jekyll configuration
 
