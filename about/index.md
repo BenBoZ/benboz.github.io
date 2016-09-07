@@ -9,6 +9,15 @@ image:
   creditlink: http://www.spoor.cc/
 ---
 
-Some info about me
+I love <3 programming, some of my interests:
+
+* C/C++
+* Python
+* (Ba)sh
+* VHDL
+* SciLab
+* Vim
+* Regex
+* Debugging
 
 
