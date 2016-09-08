@@ -11,7 +11,7 @@ image:
 
 Hi, look at the picture, thats me! My name is Ben Spoor and I love to program. 
 
-<img src="bio-photo.png" alt="Thats me!" style="width: 200px;"/>
+<img src="/images/bio-photo.png" alt="Thats me!" style="width: 200px;"/>
 
 I was working as a lighting technician, aka a 'Lampie'. 
 Got interested in electronics and started studying to become a Electrical Engineer.
