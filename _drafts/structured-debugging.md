@@ -1,3 +1,17 @@
+---
+layout: post
+title: "Structured debugging"
+modified:
+categories: blog
+excerpt: "Developers spend up to 50% of their time debugging, but don't know ...."
+tags: [debugging]
+comments: true
+share: true
+image:
+  feature: bug.jpg
+date: 2016-09-07T22:33:01-04:00
+---
+
 
 # Structured debugging #
 
