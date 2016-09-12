@@ -8,7 +8,7 @@ tags: []
 comments: true
 share: true
 image:
-  feature: bug.jpg
+  feature: cow.jpg
 date: 2016-09-07T22:33:01-04:00
 ---
 
