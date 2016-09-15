@@ -5,7 +5,7 @@ locale: en_US
 description: Personal site not intended for reading.
 logo: site-logo.png
 search: true
-url: https://benboz.github.io/
+url: https://spoorcc.github.io/
 
 # Jekyll configuration
 
@@ -42,7 +42,7 @@ owner:
   disqus-shortname: spoorcc
   twitter: spoorcc
   facebook: #username
-  github: benboz
+  github: spoorcc
   stackexchange: http://stackoverflow.com/users/1149326/spoorcc # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   linkedin: benspoor
   instagram: #username
