@@ -18,29 +18,29 @@ date: 2016-09-07T22:33:01-04:00
 Developers spend up to 50% of their time debugging (according to Britton 2013 – Reversible debugging).
 Education (typically) lacks training on the subject (McCauley 2008 – Debugging: a review of the literature from an educational perspective)
 
-With this blogpost I want to summarize the knowledge I've gathered from variuous sources into a usefull collection of abstract ways to think about debugging.
+In this blogpost I want to give you a usefull collection of abstract ways to think about debugging.
+If you write code for a living you probably recognise most or all of the techniques, but as starter this can help you structure your debugging efforts.
 
 > Disclaimer
->* There is no golden gun/silver bullet which solves all problems!
+> * There is no golden gun/silver bullet which solves all problems!
 > * This post is about strategies, not techniques (printf’s, gdb, etc...)
 > * High amount of over-simplification is used, if you studied CS, don’t shoot me.
 
-# What is software? #
+## What is software? #
 
 In order to understand debugging (strategies), it is essential to accept that:
 * Software isn’t magic.
 * (In SW) things happen for a ‘deterministic’ reason, because a program consists of:
-
-* '''finite set of inputs''': Such as input by users, files, hardware effects, system load, etc..
-* '''finite set of transformations''': Methods, functions, calls, etc.. 
-* '''finite set of outputs''': files, print to screen/console, action on port, etc...
+    * __finite set of inputs__: Such as input by users, files, hardware effects, system load, etc..
+    * __finite set of transformations__: Methods, functions, calls, etc.. 
+    * __finite set of outputs__: files, print to screen/console, action on port, etc...
 
 In SW you always start with an initial state, then some stuff happens to transforms all the inputs and after a while your system is in a new state.
 And when the final state does not match your expectation, then you start finding out why.
 
     Input state --> Transformation --> Output State ≠ Goal State
 
-# Calling bugs bugs
+## What are bugs?
 
 First actual case of bug in computer was in 1945, when in the Mark II computer at Harvard there was a moth in a relay.
 It can still be found. 
@@ -49,8 +49,6 @@ The term bug was already known to Edison in 1878:
 > “'Bugs' -- as such little faults and difficulties are called -- 
 > show themselves and months of intense watching, study and labor are 
 > requisite before commercial success or failure is certainly reached.” 
-
-## Better naming scheme
 
 Problem with the term bugs is taht it implies something magic happened. 
 The term bug is very ambiguous, it can either mean:
@@ -114,8 +112,7 @@ Sometimes re-reading some notes of the previous day, provides you with the jolt 
 
 You should choose your own format & medium, but remember that a simple hand drawn table can suffice:
 
-<example>
-
+> insert example
 
 ## Find
 We now know (and understand) our goal and domain. 
@@ -147,19 +144,23 @@ and remove unnecessary steps, but keep reproducing the same (or similar) failure
 After doing this we should update our notes describing our smaller haystack.
 
 ### Isolation
-For instance laptop does not connect to beamer:
+Let's start with an example we all encounter.
 
-** Laptop A, cable A and beamer only in bad situation	
- 
-*Check different laptop, same cable/beamer  no image X:
-** Laptop B, cable A and beamer only in bad situation
-* Check different cable (B)  image V:
-** Laptop A, cable B and beamer also in good situation
-* Check diff cable & diff laptop  image V:
-** Laptop B, cable B and beamer also in good situation
+> You arrive at your make-or-break presentation and you try to connect your laptop to the beamer.
+> What! No image?! Your presentation is almost about to start so you ask your colleague
+> if his laptop works. You connect the cable to his laptop, but still no sigar.
+> You start mumbling: 'Stupid facility management, it is 2016 and you still can't
+> even get a proper presentation on the screen'. Maybe changing the cable works. 
+> You run out to your desk get a new HDMI cable you have laying around, after running
+> back you connect it to the beamer and your laptop and finally! 
+> Your presentation appears on the screen. That was close.
+>
+> You survive your presentation and after the presentation your
+> colleague asks if he can try if his laptop works, so he knows his laptop will work
+> the next time with the new cable. Yes it does, so the problem is definitvly in the
+> old cable.
 
-Problem isolated; diff between cable A & cable B
-
+So what just happened? You __isolated the problem__ to the difference in cables.
 Isolation is very powerful technique in debugging.
 Isolation means minimizing the difference between the actual situation and the expected/wanted situation. 
  Defect is by definition always in red circle!
@@ -188,18 +189,17 @@ Backward reasoning
 
 ## Fix
 
- We found the defect!
- Apply a fix
- Keep being scientific and test your fix given your reproduction scenario.
- Usually defects cluster, so also test other values and look around.
+We found the defect!
+Apply a fix
+Keep being scientific and test your fix given your reproduction scenario.
+Usually defects cluster, so also test other values and look around.
 
-# What is structured debugging?
+# So, what is structured debugging?
 
 Structured debugging is:
 * Choosing a strategy and keep applying it (scientifically)
 * Keep a notes during the process.
 * When a strategy fails, or you’re blocked --> pick another strategy and stick to that.
-
 
 Don’t get stuck by ‘THE process’, e.g.:
 * If reproducing is hard, try locating it first, can give you clues/constraints about how to reproduce.
