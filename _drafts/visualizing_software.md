@@ -19,45 +19,62 @@ If you have a clear mental picture of how a program executes, then it is much ea
 
 I looked around in what helped me in visualizing program execution and I wanted something that I could
 apply to any language. Your first reaction is probably, _UML sequence diagram!_
-Although a sequence diagram shows me the sequence of steps that is executed, it misses information about the values.
-You cannot see the internal state of the program at a certain point, you have to infer this.
+Well, although a sequence diagram shows me the sequence of steps that is executed, it misses information about the values.
+You cannot see the internal state of the program at a certain point, you still have to read it from the source code, debugger or some kind of tracing.
 
 Well what about flame graphs they look cool (sorry for that small pun).
-I must admit they look nice, but still they don't show me the values. 
+I must admit they look nice, but still they don't show me the values.
 
 So let's go back to the drawing board.
+What do I want? I want a diagram that shows me the state of my program at all times during execution.
+Also please note that I said _mental_ picture at the beginning.
+The diagrams created here are not for real-world use.
+Showing program state from beginning to end of any real program, would let the diagram explode to infinity.
+I will use these diagrams just as a vehicle for you to think about software and debugging strategies in later posts.
 
 ## What is software? #
 
-In software (actually in hardware to) you always start with an initial state.
-Then some stuff happens to transforms all the inputs and after a while your system is in a new state.
+In software you always start with an initial state.
+For instance when you start your computer and freeze time at that moment, you could see all kinds of information.
+You could look at the values of all variables, settings, temperature, system load, free disk space and the contents of all files.
+
+If you then unfreeze the time, and start a program, then some stuff happens.
+Your computer transforms this initial input state into in a new state.
+This stuff also known as software, is usually the program you've typed with great effort.
+Or the statements you copy-pasted from StackOverflow.
+In the new state, most inputs still exist but have a different value.
+
+If you would accuratly record all the values at the initial state and would apply the exact same transformation, then the new state will be exactly the same.
+
+So in software things happen for a 'deterministic' reason, because a program consists of:
+* __finite set of inputs__: Such as input by users, files, hardware effects, system load, etc..
+* __finite set of transformations__: Methods, functions, calls, etc...
+* __finite set of outputs__: files, print to screen/console, action on port, etc...
 
 So we should accept that:
 
 > Software isn't magic.
 
-In software things happen for a 'deterministic' reason, because a program consists of:
-* __finite set of inputs__: Such as input by users, files, hardware effects, system load, etc..
-* __finite set of transformations__: Methods, functions, calls, etc...
-* __finite set of outputs__: files, print to screen/console, action on port, etc...
+# Creating the diagram
 
-So lets put this information to work for us and start constructing our visualisation.
-If we draw a set of blocks in a row, each representing an input element, we can show the input state.
+So lets put this information to work for us and start constructing our visualisation using these _inputs_, _transformations_ and _outputs_.
+If we draw a set of blocks in a row, each representing an input element, we can show the initial state.
 Each block can represent any kind of input, such as files, enviroment variables, port, memory locations, etc.
 
-> image showing row of inputs
+![row of inputs representing initial state](images/visualizing-software/inputs_only.svg)
 
-Now we have some inputs, having some initial state is nice, but worth nothing if we don't do anything with it.
-Lets add a transformation which changes them into a next state.
+Now we have some inputs, having some initial state is nice, but off course worth nothing if we don't do anything with it.
+Lets add a transformation which changes this state into a next state.
 
 > image showing transformation + outputs
 
 So, now we are done, aren't we? We have the _inputs_, _transformations_ and _outputs_ you mentioned.
-Nope, off course not, although this graphic can represent simple linear programs, how about _flow_?
-What if there are statements that influence the flow of a program?
+Nope, not quite, although this graphic can represent simple linear programs.
+How about statements that influence the _flow_ of a program?
 If you have an if statement the outcome of the if statement should somehow be represented.
+The state of the software will be different when it evaluates to TRUE or FALSE.
 What if we just add 'line_number' as input.
-It is kind of the program counter keeping track of where we are in the program.
+Think of it as the program counter keeping track of where we are in the program.
 
 > image with line_number
 
@@ -87,18 +104,21 @@ Lets link up the input values of a transformation to the output values of a tans
 If we now apply this across the entire figure, we get a _chain of dependencies_.
 This is appropriatly called a __dependency chain__.
 A dependency chain is great for visualizing what your software does and how each step interacts.
+These are very similar to program slices. 
 
 # Creating these diagrams
 
-OK, but I'm not going to draw these diagrams by hand.
+OK, but I'm not going to draw these diagrams by hand. I have better things to do!
 Off course not! I created a little python script that can generate these images from JSON files with trace information.
 
-> But then I still have to create the JSON file?
-
+But then I still have to create the JSON file?
 Yes, but I also created a python decorator that stores all tracing data into JSON.
 So you can generate these diagrams automagically for python code.
 
 If anyone wishes to write other tracers (gdb would be great :) ), then please do!
+Head over to [the PrintState repo](https://www.github.com/spoorcc/PrintState) and check it out.
+
+
 
 # Furter reading
 
