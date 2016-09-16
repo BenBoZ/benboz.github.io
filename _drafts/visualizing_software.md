@@ -60,13 +60,22 @@ So we should accept that:
 So lets put this information to work for us and start constructing our visualisation using these _inputs_, _transformations_ and _outputs_.
 If we draw a set of blocks in a row, each representing an input element, we can show the initial state.
 Each block can represent any kind of input, such as files, enviroment variables, port, memory locations, etc.
+Say we have some python code in which num1,num2 and num3 are already set.
 
-![row of inputs representing initial state](images/visualizing-software/inputs_only.svg)
+{% highlight python linenos %}
+num1, num2 = 3, 5
+{% endhighlight %}
+![row of inputs representing initial state](/images/visualizing-software/inputs_only.svg)
 
 Now we have some inputs, having some initial state is nice, but off course worth nothing if we don't do anything with it.
 Lets add a transformation which changes this state into a next state.
 
-> image showing transformation + outputs
+{% highlight python linenos %}
+num1, num2 = 3, 5
+max_num = 0
+{% endhighlight %}
+
+![First transformation](/images/visualizing-software/first_transform.svg)
 
 So, now we are done, aren't we? We have the _inputs_, _transformations_ and _outputs_ you mentioned.
 Nope, not quite, although this graphic can represent simple linear programs.
@@ -76,7 +85,17 @@ The state of the software will be different when it evaluates to TRUE or FALSE.
 What if we just add 'line_number' as input.
 Think of it as the program counter keeping track of where we are in the program.
 
-> image with line_number
+{% highlight python linenos %}
+num1, num2 = 3, 5
+max_num = 0
+
+if num1 > num2:
+   max_num = num1
+else
+   max_num = num2
+{% endhighlight %}
+
+![First flow_condition](/images/visualizing-software/first_flow_condition.svg)
 
 So, now we are really done. Aren't we? Nope, we can now represent any function or method.
 But off couse any proper program has more than just the main function or module.
@@ -84,7 +103,21 @@ So we should add a way to represent this.
 Lets add a dotted line to represent switching a context frame.
 Each frame represents a different scope, so local variables are not visible anymore when you cross this.
 
-> image which goes in/out function
+
+{% highlight python linenos %}
+def find_max(num1, num2):
+   max_num = 0
+
+   if num1 > num2:
+      max_num = num1
+   else
+      max_num = num2
+
+   return max_num
+
+my_max = find_max(3, 5)
+{% endhighlight %}
+![first context switch](/images/visualizing-software/first_context_switch.svg)
 
 Now for the final step. If you're really serious about programming, you don't stop at a single thread or program.
 You separate the processing over multiple threads or processes.

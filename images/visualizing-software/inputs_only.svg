@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -35,21 +35,21 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="999"
-     inkscape:window-height="501"
+     inkscape:window-width="1299"
+     inkscape:window-height="533"
      id="namedview278"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.5235135"
-     inkscape:cx="438.23322"
-     inkscape:cy="85.850389"
-     inkscape:window-x="2677"
-     inkscape:window-y="240"
+     inkscape:zoom="1.4807198"
+     inkscape:cx="101.25015"
+     inkscape:cy="44.059857"
+     inkscape:window-x="2176"
+     inkscape:window-y="306"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="g50" />
   <defs
      id="defs4">
     <marker
@@ -123,16 +123,6 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#grad_green"
-       id="linearGradient4414"
-       x1="2.8867514"
-       y1="8.6602535"
-       x2="2.8867514"
-       y2="95.262794"
-       gradientTransform="scale(1.7320508,0.57735027)"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#grad_green"
        id="linearGradient4422"
        x1="49.074772"
        y1="8.6602535"
@@ -150,68 +140,23 @@
        y2="95.262794"
        gradientTransform="scale(1.7320508,0.57735027)"
        gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#grad_green"
-       id="linearGradient4426"
-       x1="141.45082"
-       y1="8.6602535"
-       x2="141.45082"
-       y2="95.262794"
-       gradientTransform="scale(1.7320508,0.57735027)"
-       gradientUnits="userSpaceOnUse" />
   </defs>
   <text
-     id="text28"
-     y="69"
-     x="-69.900391"
-     transform="matrix(0,-1,1,0,0,0)"
-     style="font-size:10px;font-family:monospace;fill-opacity:1;stroke:#595959">line number</text>
-  <text
      id="text30"
-     y="148.99997"
+     y="202.99997"
      x="-69.900391"
      transform="matrix(0,-1,1,0,0,0)"
      style="font-size:10px;font-family:monospace;fill-opacity:1;stroke:#595959">num1</text>
   <text
      id="text32"
-     y="229"
+     y="283"
      x="-69.900391"
      transform="matrix(0,-1,1,0,0,0)"
      style="font-size:10px;font-family:monospace;fill-opacity:1;stroke:#595959">num2</text>
-  <text
-     id="text34"
-     y="309"
-     x="-69.900391"
-     transform="matrix(0,-1,1,0,0,0)"
-     style="font-size:10px;font-family:monospace;fill-opacity:1;stroke:#595959">num3</text>
-  <text
-     id="text36"
-     y="389"
-     x="-69.900391"
-     transform="matrix(0,-1,1,0,0,0)"
-     style="font-size:10px;font-family:monospace;fill-opacity:1;stroke:#595959">max_num</text>
-  <g
-     style="fill-opacity:1;stroke:#000000"
-     id="g38"
-     transform="translate(27,79.900383)">
-    <rect
-       id="rect40"
-       y="5"
-       x="5"
-       width="75"
-       style="fill:url(#linearGradient4414);stroke:#9fd200;filter:url(#drop_shade_filter)"
-       height="25" />
-    <text
-       id="text42"
-       y="22"
-       x="42"
-       style="font-size:10px;font-family:monospace;text-anchor:middle;stroke:#595959">9</text>
-  </g>
   <g
      style="fill-opacity:1;stroke:#000000"
      id="g44"
-     transform="translate(27,79.900383)">
+     transform="translate(81,79.900383)">
     <rect
        id="rect46"
        y="5"
@@ -228,7 +173,7 @@
   <g
      style="fill-opacity:1;stroke:#000000"
      id="g50"
-     transform="translate(27,79.900383)">
+     transform="translate(81,79.900383)">
     <rect
        id="rect52"
        y="5"
@@ -240,40 +185,6 @@
        id="text54"
        y="22"
        x="202"
-       style="font-size:10px;font-family:monospace;text-anchor:middle;stroke:#595959">3</text>
-  </g>
-  <g
-     style="fill-opacity:1;stroke:#000000"
-     id="g56"
-     transform="translate(27,79.900383)">
-    <rect
-       id="rect58"
-       y="5"
-       x="245"
-       width="75"
-       style="fill:url(#linearGradient4426);stroke:#9fd200;filter:url(#drop_shade_filter)"
-       height="25" />
-    <text
-       id="text60"
-       y="22"
-       x="282"
        style="font-size:10px;font-family:monospace;text-anchor:middle;stroke:#595959">5</text>
-  </g>
-  <g
-     style="fill-opacity:1;stroke:#000000"
-     id="g62"
-     transform="translate(27,79.900383)">
-    <rect
-       id="rect64"
-       y="5"
-       x="325"
-       width="75"
-       style="fill:url(#grad_gray);stroke:#8b8b8b;filter:url(#drop_shade_filter)"
-       height="25" />
-    <text
-       id="text66"
-       y="22"
-       x="362"
-       style="font-size:10px;font-family:monospace;text-anchor:middle;stroke:#595959">?</text>
   </g>
 </svg>
