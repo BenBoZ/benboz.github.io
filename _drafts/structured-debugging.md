@@ -12,8 +12,7 @@ image:
 date: 2016-09-07T22:33:01-04:00
 ---
 
-
-# Structured debugging #
+If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there.
 
 Developers spend up to 50% of their time debugging (according to Britton 2013 – Reversible debugging).
 Education (typically) lacks training on the subject (McCauley 2008 – Debugging: a review of the literature from an educational perspective)
@@ -25,20 +24,6 @@ If you write code for a living you probably recognise most or all of the techniq
 > * There is no golden gun/silver bullet which solves all problems!
 > * This post is about strategies, not techniques (printf’s, gdb, etc...)
 > * High amount of over-simplification is used, if you studied CS, don’t shoot me.
-
-## What is software? #
-
-In order to understand debugging (strategies), it is essential to accept that:
-* Software isn’t magic.
-* (In SW) things happen for a ‘deterministic’ reason, because a program consists of:
-    * __finite set of inputs__: Such as input by users, files, hardware effects, system load, etc..
-    * __finite set of transformations__: Methods, functions, calls, etc.. 
-    * __finite set of outputs__: files, print to screen/console, action on port, etc...
-
-In SW you always start with an initial state, then some stuff happens to transforms all the inputs and after a while your system is in a new state.
-And when the final state does not match your expectation, then you start finding out why.
-
-    Input state --> Transformation --> Output State ≠ Goal State
 
 ## What are bugs?
 
