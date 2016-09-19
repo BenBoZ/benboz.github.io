@@ -18,66 +18,75 @@ Developers spend up to 50% of their time debugging (according to Britton 2013 �
 Education (typically) lacks training on the subject (McCauley 2008 – Debugging: a review of the literature from an educational perspective)
 
 In this blogpost I want to give you a usefull collection of abstract ways to think about debugging.
-If you write code for a living you probably recognise most or all of the techniques, but as starter this can help you structure your debugging efforts.
+If you write code for a living you probably recognise most (or all) of the techniques, but as starter this can help you structure your debugging efforts.
 
 > Disclaimer
 > * There is no golden gun/silver bullet which solves all problems!
-> * This post is about strategies, not techniques (printf’s, gdb, etc...)
-> * High amount of over-simplification is used, if you studied CS, don’t shoot me.
+> * This post is about strategies, not techniques (printf's, gdb, etc...)
+> * High amount of over-simplification is used, if you've studied CS, don't shoot me.
 
 ## What are bugs?
 
-First actual case of bug in computer was in 1945, when in the Mark II computer at Harvard there was a moth in a relay.
-It can still be found. 
+Let's start with defining what bugs are. Bug is actually a very old term.
 The term bug was already known to Edison in 1878:
 
-> “'Bugs' -- as such little faults and difficulties are called -- 
-> show themselves and months of intense watching, study and labor are 
-> requisite before commercial success or failure is certainly reached.” 
+> __Bugs__ -- as such little faults and difficulties are called --
+> show themselves and months of intense watching, study and labor are
+> requisite before commercial success or failure is certainly reached.
 
-Problem with the term bugs is taht it implies something magic happened. 
-The term bug is very ambiguous, it can either mean:
+First actual case of bug in a computer was in 1945, when in the Mark II computer at Harvard there was a moth in a relay.
+It can still be seen in the Smithsonian National Museum of American History.
+
+<a title="By Courtesy of the Naval Surface Warfare Center, Dahlgren, VA., 1988. [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AH96566k.jpg"><img width="512" alt="H96566k" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/H96566k.jpg"/></a>
+
+Although bug is the most common used word in the industry it bugs some people to call bugs bugs.
+Problem with the term bugs is that it implies something magic happened.
+Something crawled in and messed up the program.
+Although the moth proves this is possible, and it usually feels like it, but:
+
+> Software isn't magic
+
+Next to that the main argument why you shouldn't use the term bugs is its ambiguity.
+It can either mean:
 * The typo that caused the wrong behavior
-* Wrong behavior in some part of the SW that was caused by the typo
+* Wrong behavior in some part of the software that was caused by the typo
 * The wrong behavior as seen by the user
 
-I prefer the terms Andreas Zeller uses, in his book "Why Programs Fail":
+I prefer the terms Andreas Zeller uses, in his great book _Why Programs Fail_:
 
-* 'Failure': bad/unexpected behavior as seen externally (by the user) and actually the last effect on the cause/effect chain.
-* 'Infection': bad/unexpected caused by other bad/unexpected behavior. Each cause in the cause effect chain except first cause.
-* 'Defect': bad/unexpected behavior causing problem. First cause in the cause effect chain.
+* __Failure__: bad/unexpected behavior as seen externally (by the user) and actually the last effect on the cause/effect chain.
+* __Infection__: bad/unexpected caused by other bad/unexpected behavior. Each cause in the cause effect chain except first cause.
+* __Defect__: bad/unexpected behavior causing problem. First cause in the cause effect chain.
 
-# Introducing: "THE process"
+# Understand, Find, Fix
 
-A lot of sources and books have all identify a three to five phase process, which basically all boil down to:
+A lot of sources and books all identify a process somewhere between 3-7 steps, which basically all boil down to:
 
-* Understand
-* Find
-* Fix
+![flow chart of understand, find and fix](/images/structured-debugging/UnderstandFindFix.svg)
 
-Finding defects is search-problem;
-* Understand phase defines the search domain & problem statement (needle & haystack)
-* Location phase minimizes search domain, then does exhaustive search.
+Finding defects is a search-problem, first you try to __understand__ what the needle and the haystack are.
+After that you try to __find__ the needle in the haystack.
+Finally you try to remove the needle from the haystack and __fix__ the problem.
 
 ## Understand
-The first step of the process is to understand the problem and the system. 
-It actually starts with collect your first clues and checking the obvious.
+The first step of the process is to understand the problem (_needle_) and the system (_haystack_).
+You should start with collectng your first clues and checking the obvious.
 After that you should describe the problem, and reproduce the failure consistently.
 
 ### Checking the obvious
 When your car doesn’t start, you check the fuel-level.
-When your vacuum cleaner doesn’t work, you check if it is plugged in.
+When your vacuum cleaner doesn't work, you check if it is plugged in.
 
 Always start with checking the most obvious possible defects.
 Don't take too long checking the obvious, and try to timebox it within 10 minutes.
-Is the program you’re running the one you expect? 
+Is the program you're running the one you expect? Are you looking at the haystack you expect?
 You can't imagine how many problems are actually solved by noticing you're running the wrong program.
 The big benefit of starting with this (apart from solving it direrctly :), you’re collecting clues to understand failure & system.
-Each clues can be seen as a constraint, defining the defect/infection/failure involved. 
+Each clue can be seen as a constraint, defining the defect/infection/failure involved. 
 
 ### Describe the problem
 Before you ever can declare anything fixed, you should be able to reproduce the failure.
-But if you want to reproduce “it”, you must know what “it” is, describe the failure.
+But if you want to reproduce _it_, you must know what _it_ is, describe the failure.
 
 For yourself answer the following 2 questions:
 * What did I expect or want to happen?
@@ -86,8 +95,8 @@ For yourself answer the following 2 questions:
 ### Reproduce the failure
 A reproduction procedure describes the steps to show the failure.
 Trying to reproduce, gives you more clues/constraints.
-Write down (better yet automate) a procedure how to reproduce the failure. 
-Procedure should be fool-proof (no ambiguity), and what it better suited for any fool than just running a simple script.
+Write down (better yet automate) a procedure how to reproduce the failure.
+Procedure should be fool-proof (no ambiguity), and what is better suited for any fool than just running a simple script.
 
 ### Start keeping notes
 After checking the obvious (<10 min), keep notes during all steps!
@@ -100,14 +109,13 @@ You should choose your own format & medium, but remember that a simple hand draw
 > insert example
 
 ## Find
-We now know (and understand) our goal and domain. 
+We now know (and understand) our goal and domain.
 The goal is our needle and the domain our haystack.
-Our goal is solving the defect that is causing the failure as described.
 Finding the defect at the beginning of the cause-effect chain is the main part of debugging.
 Some research showed it can take up to 95% of the time (G. J. Myers. The Art of Software Testing. John Wiley & Sons, Inc., New York, 1979)
 
 To make our haystack as small as possible we should reduce it through simplification and isolation.
-Our main tool to do this is the scientific method.
+Our main tool in the toolbox is not the debugger, but the scientific method.
 
 ### Scientific Method
 The scientific method is the heart of every piece of science in the world, also the science of debugging.
@@ -117,7 +125,7 @@ The scientific method is the heart of every piece of science in the world, also 
 * Predict outcomes of tests / inspections (must be falsifiable)
 * test predictions (try to disprove your hypothesis)
 * adjust/extend or create new hypothesis.
-* repeat from step 1. Ad nauseam
+* repeat from step 1. Ad nauseam
 
 When following these steps, you should do 1 thing at a time, if hypothesis is refuted (still useful info), but undo any changes. 
 
