@@ -14,7 +14,7 @@ date: 2016-09-07T22:33:01-04:00
 
 If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there.
 
-Developers spend up to 50% of their time debugging (according to Britton 2013 – Reversible debugging).
+Developers spend up to 50% of their time debugging according to [research by Cambridge university](http://download.microsoft.com/documents/rus/visualstudio/03_CambridgeUniversity_study-time_and_cost_saved_using_RDBs-January_20....pdf)
 Education (typically) lacks training on the subject (McCauley 2008 – Debugging: a review of the literature from an educational perspective)
 
 In this blogpost I want to give you a usefull collection of abstract ways to think about debugging.
@@ -27,7 +27,7 @@ If you write code for a living you probably recognise most (or all) of the techn
 
 ## What are bugs?
 
-Let's start with defining what bugs are. Bug is actually a very old term.
+Let's start with defining what bugs are. _Bug_ is actually a very old term.
 The term bug was already known to Edison in 1878:
 
 > __Bugs__ -- as such little faults and difficulties are called --
@@ -37,7 +37,9 @@ The term bug was already known to Edison in 1878:
 First actual case of bug in a computer was in 1945, when in the Mark II computer at Harvard there was a moth in a relay.
 It can still be seen in the Smithsonian National Museum of American History.
 
+<figure align="center">
 <a title="By Courtesy of the Naval Surface Warfare Center, Dahlgren, VA., 1988. [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AH96566k.jpg"><img width="512" alt="H96566k" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/H96566k.jpg"/></a>
+</figure>
 
 Although bug is the most common used word in the industry it bugs some people to call bugs bugs.
 Problem with the term bugs is that it implies something magic happened.
@@ -64,14 +66,41 @@ A lot of sources and books all identify a process somewhere between 3-7 steps, w
 
 <figure align="center">
 <img src="/images/structured-debugging/UnderstandFindFix.svg" alt="image">
-<figcaption>Caption describing these two images.</figcaption>
+<figcaption>Basic process boils down to: Understand, Find and Fix</figcaption>
 </figure>
 
 Finding defects is a search-problem, first you try to __understand__ what the needle and the haystack are.
-After that you try to __find__ the needle in the haystack.
+Once you know what needle you're looking for, you try to __find__ the needle in the haystack.
 Finally you try to remove the needle from the haystack and __fix__ the problem.
 
+## Our first bug
+
+In order to make structured debugging a little bit clear, instead of rambling about abstract concepts,
+I want to show the process using a buggy find_max implementation.
+As developer you will start screaming, _what kind of idiot created this example?!_ 
+So look for the bug in your typical quick way and, after that continue reading.
+Then we have that over with.
+
+{% highlight python linenos %}
+
+def find_max(num1, num2, num3):
+   ''' Returns the highest of the three numbers '''
+   max_num = 0
+
+   if (num1 > num2) and (num1 > num3):
+      max_num = num1
+   if (num2 > num1) and (num2 > num3):
+      max_num = num1
+   if (num3 > num1) and (num3 > num2):
+      max_num = num3
+
+   return max_num
+
+my_max = find_max(3, 5, 1)
+{% endhighlight %}
+
 ## Understand
+
 The first step of the process is to understand the problem (_needle_) and the system (_haystack_).
 You should start with collectng your first clues and checking the obvious.
 After that you should describe the problem, and reproduce the failure consistently.
