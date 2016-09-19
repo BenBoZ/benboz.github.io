@@ -13,22 +13,21 @@ date: 2016-09-07T22:33:01-04:00
 ---
 
 As first post in my [debugging](/tags/#debugging) series I want to introduce a way of visualizing software execution.
+This way you can see program state at a glance anywhere in time.
 If you have a clear mental picture of how a program executes, then it is much easier to find the root of your problem.
-
-I looked around in what helped me in visualizing program execution and I wanted something that I could
-apply to any language. Your mind is probably screaming, _UML sequence diagram!_
-Well, although a sequence diagram shows me the sequence of steps that is executed, it misses information about the values.
-You cannot see the internal state of the program at a certain point, you still have to read it from the source code, debugger or some kind of tracing.
-
-Then what about flame graphs they look cool (pun).
-I must admit they look nice, but still they don't show me the values.
-
-So let's go back to the drawing board.
-What do I want? I want a diagram that shows me the state of my program at all times during execution.
-Also please note that I said _mental_ picture at the beginning.
-The diagrams created here are not for real-world use.
+Please note that I said _mental_ picture. The diagrams created here are not for real-world use.
 Showing program state from beginning to end of any real program, would let the diagram explode to infinity.
 I will use these diagrams just as a vehicle for you to think about software and debugging strategies in later posts.
+
+I looked around in what helped me in visualizing program execution and wanted something usable for any language and paradigm.
+Your mind is probably screaming, _UML sequence diagram!_
+Well, although a sequence diagram shows me the sequence of steps that is executed, it misses information about the values.
+You cannot see the internal state of the program at a certain point.
+You would have to read it from the source code, debugger or some kind of tracing.
+
+So let's go back to the drawing board.
+What do I want? I want a diagram that shows me the state of my software at all times during execution.
+But what is software?
 
 ## What is software? #
 
@@ -37,7 +36,7 @@ For instance when you start your computer and freeze time at that moment, you co
 You could look at the values of all variables, settings, temperature, system load, free disk space and the contents of all files.
 
 If you then unfreeze the time, and start some program, then _stuff_ happens.
-Your computer transforms this initial input state into in a new state.
+Your computer transforms this initial input state into a new state.
 This stuff also known as software, is usually the program you've typed with great effort (or copy-pasted from StackOverflow).
 In the new state, most inputs still exist but have a different value.
 
