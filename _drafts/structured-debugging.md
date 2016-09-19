@@ -62,7 +62,10 @@ I prefer the terms Andreas Zeller uses, in his great book _Why Programs Fail_:
 
 A lot of sources and books all identify a process somewhere between 3-7 steps, which basically all boil down to:
 
-![flow chart of understand, find and fix](/images/structured-debugging/UnderstandFindFix.svg)
+<figure align="center">
+<img src="/images/structured-debugging/UnderstandFindFix.svg" alt="image">
+<figcaption>Caption describing these two images.</figcaption>
+</figure>
 
 Finding defects is a search-problem, first you try to __understand__ what the needle and the haystack are.
 After that you try to __find__ the needle in the haystack.
