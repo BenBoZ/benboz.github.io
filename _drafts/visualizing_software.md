@@ -133,22 +133,20 @@ Lets link up the input values of a transformation to the output values of a tans
 If we now apply this across the entire figure, we get a _chain of dependencies_.
 This is appropriatly called a __dependency chain__.
 A dependency chain is great for visualizing what your software does and how each step interacts.
-These are very similar to program slices. 
+These are also referred to as [program slices](https://en.wikipedia.org/wiki/Program_slicing).
+These will be a key concept for my future [debugging posts](/tags/#debugging).
 
 # Creating these diagrams
 
 You must be thinking by yourself:
  _OK, but I'm not going to draw these diagrams by hand. I have better things to do!_
-Off course you shouldn't! I created a little python script that can generate these images from JSON files with trace information.
-
-_But then I still have to create the JSON file?_
-Yes, but I also created a python decorator that stores all tracing data into JSON.
-So you can generate these diagrams automagically for python code.
-
-If anyone wishes to write other tracers (gdb would be great :) ), then please do!
+Off course you shouldn't! I created a little python script that can generate these images from python with trace information.
+It is currently in a proof-of-concept stage, so please be gentile on me :).
+It should be do-able to extend the tool to c using gdb, but that is on my _looooooooong_ to-do list.
 Head over to [the PrintState repo](https://www.github.com/spoorcc/PrintState) and check it out.
 
-
-
 # Furter reading
+
+- [Other visualization techniques](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.141.620&rep=rep1&type=pdf)
+
 
