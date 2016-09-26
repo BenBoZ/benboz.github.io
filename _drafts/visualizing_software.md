@@ -148,5 +148,5 @@ Head over to [the PrintState repo](https://www.github.com/spoorcc/PrintState) an
 # Furter reading
 
 - [Other visualization techniques](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.141.620&rep=rep1&type=pdf)
-
+- [Visualization technique overview](http://www.cs.rug.nl/~alext/SVA/SVA_Overview.ppt) by [RUG](http://www.cs.rug.nl/svcg/SoftVis/SoftVis)
 
