@@ -9,7 +9,6 @@ comments: true
 share: true
 image:
   feature: printstate.jpg
-date: 2016-09-07T22:33:01-04:00
 ---
 
 As first post in my [debugging](/tags/#debugging) series I want to introduce a way of visualizing software execution.
@@ -40,7 +39,7 @@ Your computer transforms this initial input state into a new state.
 This stuff also known as software, is usually the program you've typed with great effort (or copy-pasted from StackOverflow).
 In the new state, most inputs still exist but have a different value.
 
-If you would accuratly record all the values at the initial state and would apply the exact same transformation, then the new state will be exactly the same.
+If you would accurately record all the values at the initial state and would apply the exact same transformation, then the new state will be exactly the same.
 
 So in software things happen for a 'deterministic' reason, because a program consists of:
 * __finite set of inputs__: Such as input by users, files, hardware effects, system load, etc..
@@ -53,9 +52,9 @@ So we should accept that:
 
 # Making a diagram
 
-So lets put this information to work for us and start constructing our visualisation using these _inputs_, _transformations_ and _outputs_.
+So lets put this information to work for us and start constructing our visualization using these _inputs_, _transformations_ and _outputs_.
 If we draw a set of blocks in a row, each representing an input element, we can show the initial state.
-Each block can represent any kind of input, such as files, enviroment variables, port, memory locations, etc.
+Each block can represent any kind of input, such as files, environment variables, port, memory locations, etc.
 Say we have some python code in which num1 and num2 have some initial value.
 
 {% highlight python linenos %}
@@ -64,7 +63,7 @@ num1, num2 = 3, 5
 ![row of inputs representing initial state](/images/visualizing-software/inputs_only.svg)
 
 Now we have some inputs, having some initial state is nice, but off course worth nothing if we don't do anything with it.
-Lets add a transformation which changes this state into a next state.
+Let's add a transformation which changes this state into a next state.
 Notice how max_num has no value at the first line. Lets mark this with a '?'.
 
 {% highlight python linenos %}
@@ -95,11 +94,11 @@ else
 ![First flow_condition](/images/visualizing-software/first_flow_condition.svg)
 
 So, now we are really done. Aren't we? Nope, we can now represent any function or method.
-But off couse any proper program has more than just the main function or module.
+But off course any proper program has more than just the main function or module.
 So we should add a way to represent this.
 Lets add a dotted line to represent switching a context frame.
 Each frame represents a different scope, so local variables are not visible anymore when you cross this.
-To represent this non-visibilty (actually non-existance), lets mark them with an 'X'.
+To represent this non-visibility (actually non-existence), lets mark them with an 'X'.
 
 
 {% highlight python linenos %}
@@ -119,19 +118,19 @@ my_max = find_max(3, 5)
 
 
 You could extend this diagram model even further for multithreading and non-blocking call stuff,
-but that is food for another post. It will otherwise clutter your mind a little bit to much for now.
+but that is food for another post. It will otherwise clutter your mind a little bit too much for now.
 
 # Dependency chain
 
 So we now have a way of representing the state of a program during each step.
 But what if we want to know what influences what?
-If we want to get any usefull information out of this we should somehow visualize parts that influence eachother.
-Lets link up the input values of a transformation to the output values of a tansformation using an arrow.
+If we want to get any useful information out of this we should somehow visualize parts that influence eachother.
+Lets link up the input values of a transformation to the output values of a transformation using an arrow.
 
 ![first dependency chain](/images/visualizing-software/first_dependency_chain.svg)
 
 If we now apply this across the entire figure, we get a _chain of dependencies_.
-This is appropriatly called a __dependency chain__.
+This is appropriately called a __dependency chain__.
 A dependency chain is great for visualizing what your software does and how each step interacts.
 These are also referred to as [program slices](https://en.wikipedia.org/wiki/Program_slicing).
 These will be a key concept for my future [debugging posts](/tags/#debugging).
@@ -145,7 +144,7 @@ It is currently in a proof-of-concept stage, so please be gentile on me :).
 It should be do-able to extend the tool to c using gdb, but that is on my _looooooooong_ to-do list.
 Head over to [the PrintState repo](https://www.github.com/spoorcc/PrintState) and check it out.
 
-# Furter reading
+# Further reading
 
 - [Other visualization techniques](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.141.620&rep=rep1&type=pdf)
 - [Visualization technique overview](http://www.cs.rug.nl/~alext/SVA/SVA_Overview.ppt) by [RUG](http://www.cs.rug.nl/svcg/SoftVis/SoftVis)
