@@ -132,11 +132,11 @@ Procedure should be fool-proof (no ambiguity), and what is better suited for any
 
 ### Start keeping notes
 After checking the obvious (<10 min), keep notes during all steps!
-Keeping notes makes it easy to stop and continue next day. 
-It also helps in communicating your findings / effort with you colleagues, your team lead aor even to your future self.
+Keeping notes makes it easy to stop and continue the next day. 
+It also helps in communicating your findings / effort with your colleagues, your team lead, or even to your future self.
 Sometimes re-reading some notes of the previous day, provides you with the jolt of insight you need to solve it.
 
-You should choose your own format & medium, but remember that a simple hand drawn table can suffice:
+You should choose your own format & medium, but a simple hand drawn table can suffice:
 
 > insert example
 
@@ -147,19 +147,25 @@ Finding the defect at the beginning of the cause-effect chain is the main part o
 Some research showed it can take up to 95% of the time (G. J. Myers. The Art of Software Testing. John Wiley & Sons, Inc., New York, 1979)
 
 To make our haystack as small as possible we should reduce it through simplification and isolation.
-Our main tool in the toolbox is not the debugger, but the scientific method.
+To do this, we will use our main tool, and no it is ot the debugger.
+It is _the scientific method_.
 
 ### Scientific Method
 The scientific method is the heart of every piece of science in the world, also the science of debugging.
+By following a few steps consistently you have a good structured approach in locating the defect.
 
-* Make observation(s)
-* Create a hypothesis
-* Predict outcomes of tests / inspections (must be falsifiable)
-* test predictions (try to disprove your hypothesis)
-* adjust/extend or create new hypothesis.
-* repeat from step 1. Ad nauseam
+So what are these steps?
+
+1 Make observation(s)
+2 Create a hypothesis
+3 Predict outcomes of tests / inspections (must be falsifiable)
+4 test predictions (try to disprove your hypothesis)
+5 adjust/extend or create new hypothesis.
+6 repeat from step 1. Ad nauseam
 
 When following these steps, you should do 1 thing at a time, if hypothesis is refuted (still useful info), but undo any changes. 
+
+So we now have out main tool ready for action, let's start with reducing our haystack using Simplification.
 
 ### Simplification
 First step in locating is to make the reproduction procedure as short as possible to reduce the search domain (haystack).
