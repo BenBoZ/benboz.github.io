@@ -149,7 +149,5 @@ Head over to [the PrintState repo](https://www.github.com/spoorcc/PrintState) an
 
 - [Other visualization techniques](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.141.620&rep=rep1&type=pdf)
 - [Visualization technique overview](http://www.cs.rug.nl/~alext/SVA/SVA_Overview.ppt) by [RUG](http://www.cs.rug.nl/svcg/SoftVis/SoftVis)
-- These diagrams were inspired by Udacity Course of [Andreas Zeller](https://twitter.com/AndreasZeller)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8xII-I_PqLA?list=PLAwxTw4SYaPkxK63TiT88oEe-AIBhr96A" frameborder="0" allowfullscreen></iframe>
+- These diagrams were inspired by [the Debugging Udacity Course](https://www.youtube.com/playlist?list=PLAwxTw4SYaPkxK63TiT88oEe-AIBhr96A) of [Andreas Zeller](https://twitter.com/AndreasZeller)
 
