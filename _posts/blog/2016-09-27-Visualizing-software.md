@@ -42,6 +42,7 @@ In the new state, most inputs still exist but have a different value.
 If you would accurately record all the values at the initial state and would apply the exact same transformation, then the new state will be exactly the same.
 
 So in software things happen for a 'deterministic' reason, because a program consists of:
+
 * __finite set of inputs__: Such as input by users, files, hardware effects, system load, etc..
 * __finite set of transformations__: Methods, functions, calls, etc...
 * __finite set of outputs__: files, print to screen/console, action on port, etc...
