@@ -17,6 +17,7 @@ If you have a clear mental picture of how a program executes, then it is much ea
 Please note that I said _mental_ picture. The diagrams created here are not for real-world use.
 Showing program state from beginning to end of any real program, would let the diagram explode to infinity.
 I will use these diagrams just as a vehicle for you to think about software and debugging strategies in later posts.
+Watching the Debugging course on Udacity by Andreas Zeller gave me the basic idea for these diagrams.
 
 I looked around in what helped me in visualizing program execution and wanted something usable for any language and paradigm.
 Your mind is probably screaming, _UML sequence diagram!_
