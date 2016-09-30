@@ -7,6 +7,8 @@ logo: site-logo.png
 search: true
 url: https://spoorcc.github.io/
 
+google_site_verification: Ytk7SpI7_apzXckF03kxewOeWDDlGE2YqKrqTd-0Rzo
+
 # Jekyll configuration
 
 permalink:   /:categories/:title/
