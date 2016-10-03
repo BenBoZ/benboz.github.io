@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="125.04803mm"
+   height="86.158417mm"
+   viewBox="0 0 443.08356 305.28572"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="LaptopVennDiagram.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="129.54233"
+     inkscape:cy="71.712926"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1058"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Laag 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-122.35714,-177.5765)">
+    <circle
+       style="opacity:1;fill:#ff0000;fill-opacity:0.05882353;stroke:#000000;stroke-width:0.74021477;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:87;stroke-opacity:1"
+       id="path4136-4"
+       cx="412.79785"
+       cy="330.21936"
+       r="152.27275" />
+    <circle
+       style="opacity:1;fill:#00ff00;fill-opacity:0.05882353;stroke:#000000;stroke-width:0.74;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:87;stroke-opacity:1"
+       id="path4136"
+       cx="275"
+       cy="330.21936"
+       r="152.27275" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:32.12556076px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="135.1243"
+       y="339.15118"
+       id="text4138"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140"
+         x="135.1243"
+         y="339.15118"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.96655655px;font-family:Perpetua;-inkscape-font-specification:Perpetua">New cable</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:46.34649277px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="448.08597"
+       y="339.10876"
+       id="text4138-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4140-1"
+         x="448.08597"
+         y="339.10876"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.96655655px;font-family:Perpetua;-inkscape-font-specification:Perpetua">Old Cable</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:46.34649277px;line-height:100%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="344.19189"
+       y="309.47745"
+       id="text4138-01"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         x="344.19189"
+         y="309.47745"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.96655655px;line-height:100%;font-family:Perpetua;-inkscape-font-specification:'Perpetua, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         id="tspan4193">Laptop A</tspan><tspan
+         sodipodi:role="line"
+         x="344.19189"
+         y="338.444"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.96655655px;line-height:100%;font-family:Perpetua;-inkscape-font-specification:'Perpetua, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         id="tspan4152">Laptop B</tspan><tspan
+         sodipodi:role="line"
+         x="344.19189"
+         y="367.41055"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.96655655px;line-height:100%;font-family:Perpetua;-inkscape-font-specification:'Perpetua, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         id="tspan4154">Beamer</tspan></text>
+  </g>
+</svg>
