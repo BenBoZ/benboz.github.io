@@ -14,6 +14,8 @@ date: 2016-09-07T22:33:01-04:00
 
 If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there.
 
+You should now have a proper understanding of what software is and how to visualize it. Also bugs are completly clear.
+
 Developers spend up to 50% of their time debugging according to [research by Cambridge university](http://download.microsoft.com/documents/rus/visualstudio/03_CambridgeUniversity_study-time_and_cost_saved_using_RDBs-January_20....pdf).
 But education typically lacks training on the subject [(McCauley 2008).](http://faculty.salisbury.edu/~xswang/research/papers/debugging/computerscienceeducation/contentserver1.pdf)
 
@@ -24,47 +26,6 @@ If you write code for a living you probably recognise most (or all) of the techn
 > * There is no golden gun/silver bullet which solves all problems!
 > * This post is about strategies, not techniques (printf's, gdb, etc...)
 > * High amount of over-simplification is used, if you've studied CS, don't shoot me.
-
-## What are bugs?
-
-Let's start with defining what bugs are. The term _Bug_ is actually a very old.
-It was already known to Edison in 1878:
-
-> __Bugs__ -- as such little faults and difficulties are called --
-> show themselves and months of intense watching, study and labor are
-> requisite before commercial success or failure is certainly reached.
-
-The first actual case of a bug in a computer was in 1945, when in the Mark II computer at Harvard a moth crept in a relay.
-This actual bug can still be seen in the Smithsonian National Museum of American History.
-
-<figure align="center">
-<a title="By Courtesy of the Naval Surface Warfare Center, Dahlgren, VA., 1988. [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AH96566k.jpg"><img width="512" alt="H96566k" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/H96566k.jpg"/></a>
-</figure>
-
-As a developer it is important to know that although _bug_ is the most common used word in the industry, it bugs some people to call bugs bugs.
-One of the most influential persons of the Computer Science field, Edgar Dijkstra, said the following:
-
-> We could, for instance, begin with cleaning up our language by no longer calling a bug a bug but by calling it an error.
-> It is much more honest because it squarely puts the blame where it belongs, viz. with the programmer who made the error.
->
-> ~_Dijkstra_ - [_"On the cruelty of really teaching computer science"_](https://en.wikipedia.org/wiki/On_the_Cruelty_of_Really_Teaching_Computer_Science)
-
-As Dijkstra points out, the problem with the term bugs is that it implies something magic happened.
-It implies that something crawled in and messed up the program.
-Although the moth proves this is potentially possible, you or your fellow developer is the one to blame.
-
-There is another reason why it is better not to use the term bugs.
-Which I find evne more important, namely the ambiguity of the term _bug_.
-It can either mean:
-* The typo that caused the wrong behavior
-* Wrong behavior in some part of the software that was caused by the typo
-* The wrong behavior as seen by the user
-
-I prefer the terms Andreas Zeller uses, in his great book _Why Programs Fail_:
-
-* __Failure__: bad/unexpected behavior as seen externally (by the user) and actually the last effect on the cause/effect chain.
-* __Infection__: bad/unexpected caused by other bad/unexpected behavior. Each cause in the cause effect chain except first cause.
-* __Defect__: bad/unexpected behavior causing problem. First cause in the cause effect chain.
 
 # Understand, Find, Fix
 
@@ -108,11 +69,11 @@ my_max = find_max(3, 5, 1)
 ## Understand
 
 The first step of the process is to understand the problem (_needle_) and the system (_haystack_).
-You should start with collectng your first clues and checking the obvious.
+You should start with collecting your first clues and checking the obvious.
 After that you should describe the problem, and reproduce the failure consistently.
 
 ### Checking the obvious
-> On a cold winter morning, you walk to your car to got to work.
+> On a cold winter morning, you walk to your car to go to work.
 > You turn the key of the ignition, but all you hear is the motor being cranked, but not starting.
 > What is the first thing you do? you check the fuel-level.
 
