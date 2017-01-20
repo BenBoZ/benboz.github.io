@@ -108,7 +108,7 @@ In our example we should assert that we are running the `find_max` script we are
 Double check that the maximum of 3, 5, 1 should be 5.
 
 ### Describe the problem
-> Your mother yells up the staris: _"Something is wrong with the computer?!.
+> Your mother yells up the stairs: _"Something is wrong with the computer?!.
 > It doesn't do what I expect."_ What is the first question that comes to mind?
 
 We've checked the obvious and found nothing.
@@ -127,8 +127,8 @@ If we think about the visualisation programs we are describing the final state t
 > Add diagram.
 
 ### Reproduce the failure
-> Someday you get a message telling you; "Thanks for your program, but when I open
-> a file, the program crashes". As a developer you will probably ask, what file did you try to
+> Someday you get a message telling you; _"Thanks for your program, but when I open
+> a file, the program crashes"_. As a developer you will probably ask, what file did you try to
 > open, and describe me the buttons you've pressed.
 
 A reproduction procedure describes the steps needed to show the failure.
@@ -141,7 +141,7 @@ And what is better suited for any fool than running a simple script?
 
 Reproducing the failure in our example is easy, just run the script!
 
-If we think about the visualisation programs we are asserting our assumptions about the steps to got from the first state to the final state.
+If we think about the visualisation programs we are asserting our assumptions about the steps to go from the first state to the final state.
 In the _Given_, _When_, _then_ idiom this would represent the _When_, since we already know the _Given_ and _Then_ from our previous steps.
 
 > Add diagram.
@@ -175,7 +175,7 @@ It is __the scientific method__.
 
 ### Scientific Method
 The scientific method is the heart of every piece of science in the world, also the _science of debugging_.
-By following a few steps consistently you have a good structured approach for locating the defect.
+By following the steps consistently you have a good structured approach for locating the defect.
 
 <figure align="center">
 <img src="/images/structured-debugging/ScientificMethod.svg" alt="image">
@@ -191,9 +191,9 @@ So what are these steps?
 5. adjust/extend or create new hypothesis.
 6. repeat from step 1. Ad nauseam
 
-When following these steps, you should do 1 thing at a time, if the hypothesis is refuted (still useful info), but undo any changes.
+When following these steps, you should do one thing at a time, if the hypothesis is refuted (still useful info), but undo any changes.
 
-So we now have our main tool ready for action, let's start with reducing our haystack using Simplification.
+So we now have our main tool ready for action, let's start with reducing our haystack using __Simplification__.
 
 ### Simplification
 > Add example
@@ -224,9 +224,9 @@ We could prune our example by .....extend.....
 > old cable.
 
 So what just happened? You've __isolated the problem__ to the difference in cables.
-Isolation is very powerful technique in debugging.
+Isolation is a very powerful technique in debugging.
 Isolation means minimizing the difference between the actual situation and the expected/wanted situation.
- Defect is by definition always in red circle!
+The critical difference causing the failure is by definition always in the red circle!
 
 <figure class="half">
 <img src="/images/structured-debugging/LaptopVennDiagram.svg" alt="image">
@@ -243,13 +243,12 @@ Isolation can be applied to:
 * The transformations involved in the failure (code changes, execution path, order)
 * The outputs showing the failure (logs, traces, files, values)
 
-
 * What happens only in the bad/unwanted situation?
 
 ### After isolation
 
 When you isolated the problem to the smallest possible part of your software, it is time for pinpointing the defect.
-For pinpointing you should apply on of these three main strategies:
+For pinpointing you should apply one of these three main strategies:
 
 * __Binary search / wolf-fencing__:
   * split program/procedure in half, see if system (cause-effect chain) is infected, investigate infected half.
