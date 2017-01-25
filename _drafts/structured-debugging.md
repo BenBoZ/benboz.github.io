@@ -29,7 +29,7 @@ If you write code for a living you probably recognise most (or all) of the techn
 # Understand, Find, Fix
 
 We now have the groundwork layed out and can start to think about how to debug.
-A lot of sources and books about debugging and problem solving all identify a process somewhere between 4-9 steps/phases, see list below:
+A lot of sources and books about debugging and problem solving all identify a process somewhere between 4-9 steps, see list below:
 
 | Steps | Title |
 |:-----:|:------|
@@ -43,7 +43,7 @@ A lot of sources and books about debugging and problem solving all identify a pr
 | 8     | [A3 problem solving](https://en.wikipedia.org/wiki/A3_problem_solving) |
 | 9     | [Debugging - David Agans](http://debuggingrules.com/)                  |
 
-When we take a look at all these apporaches they consist of 3 main phases:
+When we take a look at all these approaches they consist of 3 main phases:
 
   * Understand
   * Find
@@ -54,9 +54,9 @@ First you try to __understand__ what the needle and the haystack are.
 Once you know what needle you're looking for, you try to __find__ the needle in the haystack.
 Finally you try to remove the needle from the haystack and __fix__ the problem.
 
-To make structured debugging a clear and instead of rambling about abstract concepts,
-I want to show the process using a buggy `find_max` implementation.
-As developer you will start screaming, _what kind of idiot created this example?!_
+The best learning is done by example, so we can reuse the example of the previous post.
+It is a buggy `find_max` implementation.
+As mentioned in that post, as developer you will probably start screaming, _what kind of idiot created this example?!_
 So look for the bug in your typical quick way and, after that continue reading.
 Then we have that over with.
 
@@ -75,7 +75,7 @@ def find_max(num1, num2, num3):
 
    return max_num
 
-my_max = find_max(3, 5, 1)
+print(find_max(3, 5, 1))
 
 {% endhighlight %}
 
@@ -83,29 +83,30 @@ my_max = find_max(3, 5, 1)
 
 The first step of the process is to understand the problem (_needle_) and the system (_haystack_).
 You should start with collecting your first clues and checking the obvious.
-Your goal of the understanding phase is to have a clear problem description and a consistent reproducement procedure. You should be able to draw a basic diagram as described in earlier #debugging posts that describes the _Given_, _When_ and _Then_. To reach this goal we will start with checking the obvious.
+Your goal of the understanding phase is to have a clear problem description and a consistent reproducement procedure. You should be able to draw a basic diagram as described in earlier [debugging posts](/tags/#debugging) that describes the _Given_, _When_ and _Then_. To reach this goal we will start with checking the obvious.
 
 ### Checking the obvious
 > On a cold winter morning, you walk to your car to go to work.
-> You turn the key of the ignition, but all you hear is the motor being cranked, but not starting.
+> You turn the key of the ignition, but all you hear is the motor cranking, but not starting.
 > What is the first thing you do? you check the fuel-level.
 
 Always start with checking the most obvious possible defects.
 Don't take too long checking the obvious, and try to timebox it within 10 minutes.
 Is the program you're running the one you expect? Are you looking at the haystack you expect?
 You can't imagine the amount of problems that are actually solved by noticing you're running the wrong program.
-The big benefit of starting with this (apart from solving it directly :), you’re collecting clues to understand failure & system.
+The big benefit of starting with this (apart from solving it directly :)), you’re collecting clues to understand the failure & system.
 See each clue as a constraint, describing the defect/infection/failure involved.
 If we think about the visualisation programs we are asserting our assumptions about the first state also known as the _Given_.
 
-> Add diagram.
+![Checking the obvious](/images/structured-debugging/checking-the-given.svg)
 
-Checking the obvious is answering the following two questions:
+Checking the obvious is answering the following questions:
 * Is it plugged in?
 * Am I doing what I expect I'm doing?
+* Are my assumptions about the first state correct?
 
 In our example we should assert that we are running the `find_max` script we are expecting.
-Double check that the maximum of 3, 5, 1 should be 5.
+We should also double check that the maximum of `3`, `5`, `1` should be `5`.
 
 ### Describe the problem
 > Your mother yells up the stairs: _"Something is wrong with the computer?!.
@@ -124,7 +125,7 @@ In our example we expect `find_max` to return 5, but actually it returns 3.
 
 If we think about the visualisation programs we are describing the final state that we expect and that it actually is, also known as the _Then_.
 
-> Add diagram.
+![Describe the problem](/images/structured-debugging/describe-the-problem.png)
 
 ### Reproduce the failure
 > Someday you get a message telling you; _"Thanks for your program, but when I open
@@ -144,7 +145,11 @@ Reproducing the failure in our example is easy, just run the script!
 If we think about the visualisation programs we are asserting our assumptions about the steps to go from the first state to the final state.
 In the _Given_, _When_, _then_ idiom this would represent the _When_, since we already know the _Given_ and _Then_ from our previous steps.
 
-> Add diagram.
+![Reproduce the failure](/images/structured-debugging/reproduce-the-failure.png)
+
+We can now formaulte it more formally with the information we have up untill now:
+
+> __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__ `5` to be printed.
 
 ### Start keeping notes
 > This part seems to be the hardest part for developers.
@@ -156,9 +161,12 @@ Keeping notes makes it easy to stop and continue the next day.
 It also helps in communicating your findings and effort with your colleagues, your team lead, or even to your future self.
 Sometimes re-reading some notes of the previous day, provides you with the jolt of insight you need to solve your problem.
 
-You should choose your own format & medium, but a simple hand drawn table can suffice:
+You should choose your own format & medium, but a simple hand drawn 2-column table can suffice:
 
-> insert example
+| What | Description |
+|:-----:|:------|
+| _Problem_ |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+
 
 ## Find
 We now know (and understand) the first and final state of our software. We also know what we must do to get it from the first state into the faulty final state (reproduction).
@@ -170,7 +178,7 @@ Finding the defect in the cause-effect chain is the main part of debugging.
 Some research showed it can take up to 95% of the time ([Myers. - The Art of Software Testing.](http://barbie.uta.edu/~mehra/Book1_The%20Art%20of%20Software%20Testing.pdf))
 
 To make our _haystack_ (i.e. chain) as small as possible we should reduce it through simplification and isolation.
-To do this, we will use our main tool, and no it is ot the debugger.
+To do this, we will use our main tool, and no it is __not__ the debugger.
 It is __the scientific method__.
 
 ### Scientific Method
@@ -196,7 +204,11 @@ When following these steps, you should do one thing at a time, if the hypothesis
 So we now have our main tool ready for action, let's start with reducing our haystack using __Simplification__.
 
 ### Simplification
-> Add example
+> When writing some unit tests you see that a test fails.
+> In order to investigate the issue you run the entire test suite of your application, which takes 20 minutes.
+> You try a fix and rerun the application, and retest again, waiting another 20 minutes.
+> At this point you realize that only one unittest in your enormous test suite is failing so running all other tests is unneccessary.
+> You disable the other tests and now you can test within a few seconds if your fix works.
 
 First step in locating is to make the reproduction procedure as short as possible to reduce the search domain (haystack).
 We decompose our system and/or our procedure in chunks (functions, libraries, steps, etc..) in smaller haystacks
@@ -204,9 +216,19 @@ and remove unnecessary steps, but keep reproducing the same (or similar) failure
 
 After doing this we should update our notes describing our smaller haystack.
 
+You should be able to answer the question:
+
 * What steps are not neccesarry to reproduce the failure?
 
-We could prune our example by .....extend.....
+If we expand the diagram of our example we can see all steps the software took to come up with the bad result.
+
+| What | Description |
+|:-----:|:------|
+| _Problem_ |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+
+With respect to the original call the `print` call is unneccessary since with a debugger we
+
+![Dependency chain](/images/structured-debugging/dependency-chain.png)
 
 ### Isolation
 > You arrive at your make-or-break presentation and you try to connect your laptop to the beamer.
