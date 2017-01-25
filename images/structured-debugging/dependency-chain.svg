@@ -13,8 +13,8 @@
    id="svg4136"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="defect-infection-failure.svg"
-   inkscape:export-filename="C:\cygwin64\home\bspoor\spoorcc.github.io\images\what-are-bugs\defect-infection-failure.png"
+   sodipodi:docname="dependency-chain.svg"
+   inkscape:export-filename="C:\cygwin64\home\bspoor\spoorcc.github.io\images\structured-debugging\dependency-chain.png"
    inkscape:export-xdpi="240"
    inkscape:export-ydpi="240">
   <metadata
@@ -47,7 +47,7 @@
      fit-margin-right="0"
      fit-margin-bottom="4"
      inkscape:zoom="1.2796997"
-     inkscape:cx="144.97494"
+     inkscape:cx="13.69414"
      inkscape:cy="192.45677"
      inkscape:window-x="3278"
      inkscape:window-y="-8"
