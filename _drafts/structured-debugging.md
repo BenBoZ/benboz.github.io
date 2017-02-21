@@ -12,13 +12,13 @@ image:
 date: 2016-09-07T22:33:01-04:00
 ---
 
-If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there. You should now have a proper understanding of what software is and how to visualize it. Also the term _bugs_ is completly clear.
+If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there. You should now have a proper understanding of what software is and how to visualize it. Also the term _bugs_ is completely clear.
 
 Developers spend up to 50% of their time debugging according to [research by Cambridge university](http://download.microsoft.com/documents/rus/visualstudio/03_CambridgeUniversity_study-time_and_cost_saved_using_RDBs-January_20....pdf).
 But education typically lacks training on the subject [(McCauley 2008).](http://faculty.salisbury.edu/~xswang/research/papers/debugging/computerscienceeducation/contentserver1.pdf)
 
-In this blogpost I want to give you a usefull collection of abstract ways to think about debugging.
-If you write code for a living you probably recognise most (or all) of the techniques, but as starter this can help you structuring your debugging efforts.
+In this blog post I want to give you a useful collection of abstract ways to think about debugging.
+If you write code for a living you probably recognize most (or all) of the techniques, but as starter this can help you structuring your debugging efforts.
 
 > __Disclaimer__
 > * There is no golden gun/silver bullet which solves all problems!
@@ -28,7 +28,7 @@ If you write code for a living you probably recognise most (or all) of the techn
 
 # Understand, Find, Fix
 
-We now have the groundwork layed out and can start to think about how to debug.
+We now have the groundwork laid out and can start to think about how to debug.
 A lot of sources and books about debugging and problem solving all identify a process somewhere between 4-9 steps, see list below:
 
 | Steps | Title |
@@ -83,20 +83,20 @@ print(find_max(3, 5, 1))
 
 The first step of the process is to understand the problem (_needle_) and the system (_haystack_).
 You should start with collecting your first clues and checking the obvious.
-Your goal of the understanding phase is to have a clear problem description and a consistent reproducement procedure. You should be able to draw a basic diagram as described in earlier [debugging posts](/tags/#debugging) that describes the _Given_, _When_ and _Then_. To reach this goal we will start with checking the obvious.
+Your goal of the understanding phase is to have a clear problem description and a consistent reproduction procedure. You should be able to draw a basic diagram as described in earlier [debugging posts](/tags/#debugging) that describes the _Given_, _When_ and _Then_. To reach this goal we will start with checking the obvious.
 
 ### Checking the obvious
 > On a cold winter morning, you walk to your car to go to work.
 > You turn the key of the ignition, but all you hear is the motor cranking, but not starting.
-> What is the first thing you do? you check the fuel-level.
+> What is the first thing you do? You check the fuel-level.
 
 Always start with checking the most obvious possible defects.
-Don't take too long checking the obvious, and try to timebox it within 10 minutes.
+Don't take too long checking the obvious, and try to time box it within 10 minutes.
 Is the program you're running the one you expect? Are you looking at the haystack you expect?
 You can't imagine the amount of problems that are actually solved by noticing you're running the wrong program.
 The big benefit of starting with this (apart from solving it directly :)), you’re collecting clues to understand the failure & system.
 See each clue as a constraint, describing the defect/infection/failure involved.
-If we think about the visualisation programs we are asserting our assumptions about the first state also known as the _Given_.
+If we think about the visualization programs we are asserting our assumptions about the first state also known as the _Given_.
 
 ![Checking the obvious](/images/structured-debugging/checking-the-given.svg)
 
@@ -123,7 +123,7 @@ You should be able to answer the following 2 questions:
 
 In our example we expect `find_max` to return 5, but actually it returns 3.
 
-If we think about the visualisation programs we are describing the final state that we expect and that it actually is, also known as the _Then_.
+If we think about the visualization programs we are describing the final state that we expect and that it actually is, also known as the _Then_.
 
 ![Describe the problem](/images/structured-debugging/describe-the-problem.png)
 
@@ -135,25 +135,25 @@ If we think about the visualisation programs we are describing the final state t
 A reproduction procedure describes the steps needed to show the failure.
 Trying to reproduce, gives you more clues/constraints.
 Write down (better yet automate) a procedure how to reproduce the failure.
-The procedure should be fool-proof, you should absolutly no room for ambiguity.
+The procedure should be fool-proof, you should absolutely no room for ambiguity.
 And what is better suited for any fool than running a simple script?
 
 * What steps do I have to do to reproduce the failure?
 
 Reproducing the failure in our example is easy, just run the script!
 
-If we think about the visualisation programs we are asserting our assumptions about the steps to go from the first state to the final state.
+If we think about the visualization programs we are asserting our assumptions about the steps to go from the first state to the final state.
 In the _Given_, _When_, _then_ idiom this would represent the _When_, since we already know the _Given_ and _Then_ from our previous steps.
 
 ![Reproduce the failure](/images/structured-debugging/reproduce-the-failure.png)
 
-We can now formaulte it more formally with the information we have up untill now:
+We can now formulate it more formally with the information we have up until now:
 
 > __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__ `5` to be printed.
 
 ### Start keeping notes
 > This part seems to be the hardest part for developers.
-> Typically a debugging session start out with small checks and as time goes by you keep tumbling down the rabbithole.
+> Typically a debugging session start out with small checks and as time goes by you keep tumbling down the rabbit hole.
 > After a while you realize you are 2 days further in time, have tried a lot of things, but the failure is still there.
 
 After checking the obvious (<10 min), keep notes during all steps!
@@ -207,7 +207,7 @@ So we now have our main tool ready for action, let's start with reducing our hay
 > When writing some unit tests you see that a test fails.
 > In order to investigate the issue you run the entire test suite of your application, which takes 20 minutes.
 > You try a fix and rerun the application, and retest again, waiting another 20 minutes.
-> At this point you realize that only one unittest in your enormous test suite is failing so running all other tests is unneccessary.
+> At this point you realize that only one unittest in your enormous test suite is failing so running all other tests is unnecessary.
 > You disable the other tests and now you can test within a few seconds if your fix works.
 
 First step in locating is to make the reproduction procedure as short as possible to reduce the search domain (haystack).
@@ -218,13 +218,16 @@ After doing this we should update our notes describing our smaller haystack.
 
 You should be able to answer the question:
 
-* What steps are not neccesarry to reproduce the failure?
+* What steps are not necessary to reproduce the failure?
 
 If we expand the diagram of our example we can see all steps the software took to come up with the bad result.
 
-| What | Description |
-|:-----:|:------|
-| _Problem_ |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+| What           | Description |
+|:--------------:|:------------|
+| _Problem_      |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+| _Hypothesis-1_ | `print` is not needed for getting `3` instead of `5` |
+| _Prediction-1_ | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
+| _Test-1_       | _Prediction-1_ is confirmed |
 
 With respect to the original call the `print` call is unneccessary since with a debugger we
 
