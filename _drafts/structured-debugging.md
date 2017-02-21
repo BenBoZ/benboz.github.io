@@ -54,7 +54,7 @@ First you try to __understand__ what the needle and the haystack are.
 Once you know what needle you're looking for, you try to __find__ the needle in the haystack.
 Finally you try to remove the needle from the haystack and __fix__ the problem.
 
-The best learning is done by example, so we can reuse the example of the previous post.
+The best learning is done by example, so we can reuse the example of [the previous post](/blog/What-are-bugs/).
 It is a buggy `find_max` implementation.
 As mentioned in that post, as developer you will probably start screaming, _what kind of idiot created this example?!_
 So look for the bug in your typical quick way and, after that continue reading.
@@ -170,7 +170,7 @@ You should choose your own format & medium, but a simple hand drawn 2-column tab
 
 ## Find
 We now know (and understand) the first and final state of our software. We also know what we must do to get it from the first state into the faulty final state (reproduction).
-Remember the dependency chain introduced in my previous post?
+Remember the dependency chain introduced in [my previous post](/blog/What-are-bugs/)?
 We actually defined the beginning of this chain, being the start or input state.
 And we defined the failure being the last link in the dependency chain.
 We should now start to find the steps linking these states which makes the output state a failure.
@@ -199,7 +199,8 @@ So what are these steps?
 5. adjust/extend or create new hypothesis.
 6. repeat from step 1. Ad nauseam
 
-When following these steps, you should do one thing at a time, if the hypothesis is refuted (still useful info), but undo any changes.
+When following these steps, you should do one thing at a time.
+If the hypothesis is refuted remember it can still be useful info, but undo any changes.
 
 So we now have our main tool ready for action, let's start with reducing our haystack using __Simplification__.
 
@@ -212,7 +213,8 @@ So we now have our main tool ready for action, let's start with reducing our hay
 
 First step in locating is to make the reproduction procedure as short as possible to reduce the search domain (haystack).
 We decompose our system and/or our procedure in chunks (functions, libraries, steps, etc..) in smaller haystacks
-and remove unnecessary steps, but keep reproducing the same (or similar) failure. (Breadth-first search).
+and remove unnecessary steps, but keep reproducing the same (or similar) failure.
+For you graph-lovers out there, you will recognize it as a Breadth-first search.
 
 After doing this we should update our notes describing our smaller haystack.
 
@@ -229,29 +231,31 @@ If we expand the diagram of our example we can see all steps the software took t
 | _Prediction-1_ | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
 | _Test-1_       | _Prediction-1_ is confirmed |
 
-With respect to the original call the `print` call is unneccessary since with a debugger we
+With respect to the original call the `print` call is unnecessary since with a debugger we can see the value of `max_num`
 
 ![Dependency chain](/images/structured-debugging/dependency-chain.png)
 
 ### Isolation
 > You arrive at your make-or-break presentation and you try to connect your laptop to the beamer.
 > What! No image?! Your presentation is almost about to start so you ask your colleague
-> if his laptop works. You connect the cable to his laptop, but still no sigar.
-> You start mumbling: 'Stupid facility management, it is 2016 and you still can't
-> even get a proper presentation on the screen'. Maybe changing the cable works.
+> if his laptop works. You connect the cable to his laptop, but still no cigar.
+> You start mumbling: _'Stupid facility management, it is 2016 and you still can't
+> even get a proper presentation on the screen'_. Maybe changing the cable works.
 > You run out to your desk get a new HDMI cable you have laying around, after running
 > back you connect it to the beamer and your laptop and finally!
 > Your presentation appears on the screen. That was close.
 >
 > You survive your presentation and after the presentation your
 > colleague asks if he can try if his laptop works, so he knows his laptop will work
-> the next time with the new cable. Yes it does, so the problem is definitvly in the
+> the next time with the new cable. Yes it does, so the problem is definitely in the
 > old cable.
 
 So what just happened? You've __isolated the problem__ to the difference in cables.
 Isolation is a very powerful technique in debugging.
 Isolation means minimizing the difference between the actual situation and the expected/wanted situation.
 The critical difference causing the failure is by definition always in the red circle!
+You are applying the _law of parsimony_ a.k.a. ["_Occam's razor_"](https://en.wikipedia.org/wiki/Occam's_razor).
+Meaning you are looking for the smallest difference to explain the defect.
 
 <figure class="half">
 <img src="/images/structured-debugging/LaptopVennDiagram.svg" alt="image">
@@ -270,28 +274,48 @@ Isolation can be applied to:
 
 * What happens only in the bad/unwanted situation?
 
+In a future post I'm writing I want to explain more concrete isolation techniques.
+
 ### After isolation
 
-When you isolated the problem to the smallest possible part of your software, it is time for pinpointing the defect.
-For pinpointing you should apply one of these three main strategies:
+When you have isolated the problem to the smallest possible part of your software, it is time for pinpointing the defect.
+Pinpointing the defect always involves following the dependency chain.
+
+The literature shows three main strategies to be effective:
 
 * __Binary search / wolf-fencing__:
-  * split program/procedure in half, see if system (cause-effect chain) is infected, investigate infected half.
+  * Split the program/procedure in half, see if the system (dependency chain)
+    is infected, if so investigate half before that point, if not infect half
+    after that point.
 
 * __(Forward) Topographic__
-  * Given certain bad-run only inputs, walkthrough the code seeing what path is followed. Follow cause-effect chain from inputs.
+  * Given a set of inputs and transformations resulting in a failure, follow
+    the dependency chain from the start step-by-step, until you see the defect.
 
 * __Backward reasoning__
-  * Given bad-run only outputs, walk backwards in time and follow the infection up to the defect. Follow cause-effect chain backwards from outputs.
+  * Given a set of outputs that are faulty, walk backwards in time and follow
+    the infections in the dependency chain up to the defect.
+
+Choosing which strategy to use is something you will learn when doing.
+The rate of success of each strategy differs per situation.
+The most important part is that you stick with one of the three until you get stuck.
+After that, switch to another strategy.
+This way your debugging effort becomes structured.
+
+> NOTE: Extend with examples of `find_max`
 
 ## Fix
 
-We found the defect!
-Apply a fix
-Keep being scientific and test your fix given your reproduction scenario.
+After you pinpointed the defect. You can climb on your chair and shout: _"We found the defect!"_
+If you have found the defect you can apply a fix.
+Keep being scientific and test your fix using your reproduction scenario.
 Usually defects cluster, so also test other values and look around.
 
+> NOTE: Extend with examples of `find_max`
+
 # So, what is structured debugging?
+
+To wrap up and give you the must-knows after reading this post:
 
 Structured debugging is:
 * Choosing a strategy and keep applying it (scientifically)
@@ -303,4 +327,4 @@ Don’t get stuck by ‘THE process’, e.g.:
 * If isolation looks promising, skip simplifying.
 * Use binary-split for simplifying.
 
-# Furter reading
+# Further reading
