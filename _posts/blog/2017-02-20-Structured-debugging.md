@@ -9,7 +9,7 @@ comments: true
 share: true
 image:
   feature: bug.jpg
-date: 2016-09-07T22:33:01-04:00
+date: 2017-21-02T07:00:01-04:00
 ---
 
 If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there. You should now have a proper understanding of what software is and how to visualize it. Also the term _bugs_ is completely clear.
