@@ -20,7 +20,7 @@ If your mental picture is clear, thinking about debugging becomes easier.
 # A short history of bugs
 
 Let's start with defining what bugs are. The term _Bug_ is actually not from recent years.
-The term was already known to Edison in 1878:
+The term was already known to Thomas Edison in 1878:
 
 > __Bugs__ -- as such little faults and difficulties are called --
 > show themselves and months of intense watching, study and labor are
