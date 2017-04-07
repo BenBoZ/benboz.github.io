@@ -57,7 +57,7 @@ So we should accept that:
 So lets put this information to work for us and start constructing our visualization using these _inputs_, _transformations_ and _outputs_.
 If we draw a set of blocks in a row, each representing an input element, we can show the initial state.
 Each block can represent any kind of input, such as files, environment variables, port, memory locations, etc.
-Say we have some python code in which num1 and num2 have some initial value.
+Say we have some python code in which `num1` and `num2` have some initial value.
 
 {% highlight python linenos %}
 num1, num2 = 3, 5
