@@ -19,7 +19,7 @@ If your mental picture is clear, thinking about debugging becomes easier.
 
 # A short history of bugs
 
-Let's start with defining what bugs are. The term _Bug_ is actually not from recent years.
+Let's start with a short history of the term __bug__. It is actually not from recent years.
 The term was already known to Thomas Edison in 1878:
 
 > __Bugs__ -- as such little faults and difficulties are called --
@@ -66,9 +66,9 @@ We can visualize these 3 items using those diagrams.
 If we draw the infected states and defects red and the arrows linking these also red, then we get a clear picture how the infection propagates through the software program.
 
 To make this story concrete and to avoid rambling about abstract concepts,
-I want to show the process using a buggy `find_max` implementation.
+I want to show the process using a broken `find_max` implementation.
 As developer you will start screaming, _what kind of idiot created this example?!_
-So look for the bug in your typical quick way and, after that continue reading.
+So look for the defect in your typical quick way and, after that continue reading.
 Then we have that over with.
 
 {% highlight python linenos %}
