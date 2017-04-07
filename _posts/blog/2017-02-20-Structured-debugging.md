@@ -331,7 +331,7 @@ We've answered the question: _What happens only in a bad/unwanted situation?_
 
 In a future post I'm writing, I want to explain more concrete isolation techniques.
 
-### After isolation
+### Pinpointing
 
 When you have isolated the problem to the smallest possible part of your software, it is time for pinpointing the defect.
 Pinpointing the defect always involves following the dependency chain.
