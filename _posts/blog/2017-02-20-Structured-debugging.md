@@ -362,7 +362,7 @@ If we follow the chain step-by-step trying to disprove our hypothesis, we can se
                                         `True` and steps into the `elif` branch
                                         and has as result `line_number = 8`.
 
-The last step contradicts our hypothesis and that means our hypothesis is _disproven_ and not valid.
+The last step contradicts our hypothesis and that means our hypothesis is _disproved_ and not valid.
 With this information we can create a new hypothesis and test and continue our forward reasoning:
 
 > __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is determined, but the incorrect output value is assigned.
