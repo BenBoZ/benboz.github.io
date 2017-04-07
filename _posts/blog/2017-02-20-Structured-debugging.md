@@ -275,8 +275,15 @@ Isolation can be applied to:
 * What happens only in the bad/unwanted situation?
 
 Lets take our example and apply isolation to the inputs of `find_max`.
-We can take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
-If we place the inputs in an isolation diagram, we can make the following image:
+Needless to say we should use our _scientific method_ tool and create a hypothesis and a test to try to disprove our hypothesis.
+
+> Hypothesis: The failure is dependent on the permutation of the input values
+> Test: Take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
+>       There will be different results based on the permutation.
+
+If we place the inputs in an isolation diagram putting correct results in the
+green circle and wrong results in the red circle, we can make the following
+image:
 
 <figure align="center">
 <img src="/images/structured-debugging/IsolationVennDiagramPermutations.svg" alt="image">
@@ -284,7 +291,7 @@ If we place the inputs in an isolation diagram, we can make the following image:
 </figure>
 
 It is now clear that somehow when `5` is in the middle the `find_max` function fails.
-We have now isolated the problem to inputs where the max is in the middle position.
+This confirms our hypothesis and we have now isolated the problem to inputs where the max is in the middle position.
 We've answered the question: _What happens only in a bad/unwanted situation?_
 
 In a future post I'm writing, I want to explain more concrete isolation techniques.
@@ -315,7 +322,37 @@ The most important part is that you stick with one of the three until you get st
 After that, switch to another strategy.
 This way your debugging effort becomes structured.
 
-> NOTE: Extend with examples of `find_max`
+We can take our example and apply __forward__ reasoning to it.
+Again it is important to create a hypothesis, this might seem overly complex, but this will keep you focussed on what you are trying to accomplish.
+Next to that, this is only a trivial example, but used to show the process.
+Isolation showed that only in bad situations `5` is in the middle.
+If we use one of the inputs in the bad situation: `3`, `5`, `1` we can use that to walk our dependency chain starting from the first state.
+
+> Hypothesis: Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.
+> Test: Follow dependency chain from the beginning untill it is determined which number is the maximum.
+
+![Dependency chain](/images/structured-debugging/dependency-chain.png)
+
+If we do it step-by-step we can see the following:
+
+1. `max_num = 0` : This does not determine the maximum, ignore.
+2. `if num1 > num2 and num1 > num3` : This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
+3. `elif num2 > num1 and num2 > num3` : This checks if `num2` is the maximum, it is correct since it validates `True` steps into the `elif` branch and has as result `line_number = 8`.
+
+This means that our hypothesis is _disproven_ and not valid.
+
+With this information we can create a new hypothesis and test and continue our forward reasoning:
+
+> Hypothesis: Given the inputs `3`, `5`, and `1`, the correct maximum number is determined. But the incorrect output value is assigned.
+> Test: Follow dependency chain from the beginning until the return value is calculated.
+
+We can now continue from where we left off.
+
+4. `max_num = num1`: This assigns `num1` to `max_num` which is wrong!
+
+We have proven our hypothesis, but to be sure we can continue our forward reasoning to see if this value is also returned
+
+5. `return max_num`: The infected `max_num` value is return infecting the rest of the program and resulting in the failure.
 
 ## Fix
 
