@@ -277,14 +277,15 @@ Isolation can be applied to:
 Lets take our example and apply isolation to the inputs of `find_max`.
 Needless to say we should use our _scientific method_ tool and create a hypothesis and a test to try to disprove our hypothesis.
 
-> __Hypothesis__: The failure is dependent on the permutation of the input values
+> __Hypothesis__: Permutations of the inputs where the middle value is the maximum occur only in bad situations.
 >
 > __Test__: Take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
->           There will be different results based on the permutation.
+>           Only permutations with the middle number as maximum will occur in bad situations.
 
-If we place the inputs in an isolation diagram putting correct results in the
-green circle and wrong results in the red circle, we can make the following
-image:
+Feeding these values to `find_max` indeed results in different outcomes.
+If we take an isolation diagram an placing inputs resulting in correct outcomes
+in the green circle and wrong outcomes in the red circle, we can make the
+following image:
 
 <figure align="center">
 <img src="/images/structured-debugging/IsolationVennDiagramPermutations.svg" alt="image">
