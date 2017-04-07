@@ -13,29 +13,29 @@ date: 2017-02-21T07:00:01-04:00
 ---
 
 <style>
-.debuglog table {
+table.debuglog {
   padding: 0; }
-  .debuglog table tr {
+  table tr {
     border-top: 1px solid #cccccc;
     background-color: white;
     margin: 0;
     padding: 0; }
-    .debuglog table tr:nth-child(2n) {
+    table tr:nth-child(2n) {
       background-color: #f8f8f8; }
-    .debuglog table tr th {
+    table tr th {
       font-weight: bold;
       border: 1px solid #cccccc;
       text-align: left;
       margin: 0;
       padding: 6px 13px; }
-    .debuglog table tr td {
+    table tr td {
       border: 1px solid #cccccc;
       text-align: left;
       margin: 0;
       padding: 6px 13px; }
-    .debuglog table tr th :first-child, .debuglog table tr td :first-child {
+    table tr th :first-child, table tr td :first-child {
       margin-top: 0; }
-    .debuglog table tr th :last-child, .debuglog table tr td :last-child {
+    table tr th :last-child, table tr td :last-child {
       margin-bottom: 0; }
 </style>
 
