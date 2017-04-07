@@ -326,9 +326,12 @@ This way your debugging effort becomes structured.
 
 We can take our example and apply __forward__ reasoning to it.
 Again it is important to create a hypothesis, this might seem overly complex, but this will keep you focussed on what you are trying to accomplish.
-Next to that, this is only a trivial example, but used to show the process.
+Next to that, this is only a trivial example, used to show the process.
+
 Isolation showed that only in bad situations `5` is in the middle.
 If we use one of the inputs in the bad situation: `3`, `5`, `1` we can use that to walk our dependency chain starting from the first state.
+We should make a hypothesis as to how this specific permutation would result in a failure.
+Maybe the `find_max` function can not determine what number is the maximum.
 
 > __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.
 >
