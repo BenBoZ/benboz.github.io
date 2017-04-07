@@ -79,7 +79,7 @@ So, now we are done, aren't we? We have the _inputs_, _transformations_ and _out
 Nope, not quite, although this graphic can represent simple linear programs.
 How about statements that influence the _flow_ of a program?
 If you have an if statement the outcome of the if statement should somehow be represented.
-The state of the software will be different when it evaluates to TRUE or FALSE.
+The state of the software will be different when it evaluates to `True` or `False`.
 What if we just add `line_number` as input.
 Think of it as the program counter keeping track of where we are in the program.
 
