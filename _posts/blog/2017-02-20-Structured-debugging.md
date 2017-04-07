@@ -369,15 +369,7 @@ We should make a hypothesis as to how this specific permutation would result in 
 Maybe the `find_max` function can not determine what number is the maximum.
 We can add _Hypothesis-3_ and accompany it with _Prediction-3_:
 
-| What           | Description |
 |:--------------:|:------------|
-| _Problem_      |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
-| _Hypothesis-1_ | `print` is not needed for getting `3` instead of `5` |
-| _Prediction-1_ | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
-| _Test-1_       | _Prediction-1_ is confirmed |
-| _Hypothesis-2_ | The failure only occurs when there is a specific permutation of the inputs. |
-| _Prediction-2_ | Take all permutations of `3`, `5` and `1` and feed all these values through our `find_max` implementation. Only certain permutations will occur in bad situations. |
-| _Test-2_       | Only permutations `3, 5, 1` and `1, 3, 5` result in a failure.
 | _Hypothesis-3_ | The correct maximum number is not determined. |
 | _Prediction-3_ | Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not seen as maximum |
 {: .debuglog}
