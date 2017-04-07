@@ -277,9 +277,10 @@ Isolation can be applied to:
 Lets take our example and apply isolation to the inputs of `find_max`.
 Needless to say we should use our _scientific method_ tool and create a hypothesis and a test to try to disprove our hypothesis.
 
-> Hypothesis: The failure is dependent on the permutation of the input values
-> Test: Take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
->       There will be different results based on the permutation.
+> __Hypothesis__: The failure is dependent on the permutation of the input values
+>
+> __Test__: Take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
+>           There will be different results based on the permutation.
 
 If we place the inputs in an isolation diagram putting correct results in the
 green circle and wrong results in the red circle, we can make the following
@@ -328,8 +329,9 @@ Next to that, this is only a trivial example, but used to show the process.
 Isolation showed that only in bad situations `5` is in the middle.
 If we use one of the inputs in the bad situation: `3`, `5`, `1` we can use that to walk our dependency chain starting from the first state.
 
-> Hypothesis: Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.
-> Test: Follow dependency chain from the beginning untill it is determined which number is the maximum.
+> __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.
+>
+> __Test__: Follow dependency chain from the beginning untill it is determined which number is the maximum.
 
 ![Dependency chain](/images/structured-debugging/dependency-chain.png)
 
@@ -343,8 +345,9 @@ This means that our hypothesis is _disproven_ and not valid.
 
 With this information we can create a new hypothesis and test and continue our forward reasoning:
 
-> Hypothesis: Given the inputs `3`, `5`, and `1`, the correct maximum number is determined. But the incorrect output value is assigned.
-> Test: Follow dependency chain from the beginning until the return value is calculated.
+> __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is determined. But the incorrect output value is assigned.
+>
+> __Test__: Follow dependency chain from the beginning until the return value is calculated.
 
 We can now continue from where we left off.
 
