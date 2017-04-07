@@ -275,12 +275,17 @@ Isolation can be applied to:
 * What happens only in the bad/unwanted situation?
 
 Lets take our example and apply isolation to the inputs of `find_max`.
+And let us look at [permutations](https://en.wikipedia.org/wiki/Permutation) of the inputs.
 Needless to say we should use our _scientific method_ tool and create a hypothesis and a test to try to disprove our hypothesis.
 
-> __Hypothesis__: The failure only occurs when there is a specific permutation of the inputs.
->
-> __Test__: Take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
->           Only certain permutations will occur in bad situations.
+| What           | Description |
+|:--------------:|:------------|
+| _Problem_      |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+| _Hypothesis-1_ | `print` is not needed for getting `3` instead of `5` |
+| _Prediction-1_ | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
+| _Test-1_       | _Prediction-1_ is confirmed |
+| _Hypothesis-2_ | The failure only occurs when there is a specific permutation of the inputs. |
+| _Prediction-2_ | Take all permutations of `3`, `5` and `1` and feed all these values through our `find_max` implementation. Only certain permutations will occur in bad situations. |
 
 Feeding these values to `find_max` indeed results in different outcomes.
 If we take an isolation diagram an placing inputs resulting in correct outcomes
@@ -332,20 +337,27 @@ Isolation showed that only in bad situations `5` is in the middle.
 If we use one of the inputs in the bad situation: `3`, `5`, `1` we can use that to walk our dependency chain starting from the first state.
 We should make a hypothesis as to how this specific permutation would result in a failure.
 Maybe the `find_max` function can not determine what number is the maximum.
+We can add _Hypothesis-3_ and accompany it with _Prediction-3_:
 
-> __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.
->
-> __Test__: Follow dependency chain from the beginning until it is determined which number is the maximum.
+| What           | Description |
+|:--------------:|:------------|
+| _Problem_      |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+| _Hypothesis-1_ | `print` is not needed for getting `3` instead of `5` |
+| _Prediction-1_ | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
+| _Test-1_       | _Prediction-1_ is confirmed |
+| _Hypothesis-2_ | The failure only occurs when there is a specific permutation of the inputs. |
+| _Prediction-2_ | Take all permutations of `3`, `5` and `1` and feed all these values through our `find_max` implementation. Only certain permutations will occur in bad situations. |
+| _Test-2_       | Only permutations `3, 5, 1` and `1, 3, 5` result in a failure.
+| _Hypothesis-3_ | The correct maximum number is not determined. |
+| _Prediction-3_ | Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not seen as maximum |
 
 ![Dependency chain](/images/structured-debugging/dependency-chain.png)
 
 If we follow the chain step-by-step trying to disprove our hypothesis, we can see the following:
 
-__Step 1.__ `max_num = 0` : This does not determine the maximum, ignore.
-
-__Step 2.__ `if num1 > num2 and num1 > num3` : This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
-
-__Step 3.__ `elif num2 > num1 and num2 > num3` : This checks if `num2` is the maximum,
+* __Step 1.__ `max_num = 0` : This does not determine the maximum, ignore.
+* __Step 2.__ `if num1 > num2 and num1 > num3` : This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
+* __Step 3.__ `elif num2 > num1 and num2 > num3` : This checks if `num2` is the maximum,
                                         it is correct since it evaluates to
                                         `True` and steps into the `elif` branch
                                         and has as result `line_number = 8`.
@@ -359,7 +371,7 @@ With this information we can create a new hypothesis and test and continue our f
 
 Let us continue where we left of on line 8.
 
-__Step 4.__ `max_num = num1`: This assigns `num1` to `max_num` which is wrong!
+* __Step 4.__ `max_num = num1`: This assigns `num1` to `max_num` which is wrong!
 
 Eureka! We have proven our hypothesis and probably found the defect. To be sure
 we should continue our forward reasoning to see if this value is also returned.
@@ -370,9 +382,9 @@ we should continue our forward reasoning to see if this value is also returned.
 
 This is a very trivial example and only one step.
 
-__Step 5.__ `return max_num`: The infected `max_num` value is return infecting the rest of the program and resulting in the failure.
+* __Step 5.__ `return max_num`: The infected `max_num` value is returned infecting the rest of the program and resulting in the failure.
 
-In our debugging log we now have the following tested hypotheses, giving a complete description of the failure.
+In our debugging log we now have the following tested hypotheses, giving a complete description of the inputs, defect, infection and failure.
 Note that the hypothesis that was disproved is still useful since you put in effort to disprove it.
 If somebody in the future would take your debugging log, he can see you have tested and disproved the hypothesis saving that person effort.
 
