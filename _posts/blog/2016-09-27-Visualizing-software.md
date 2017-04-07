@@ -66,7 +66,7 @@ num1, num2 = 3, 5
 
 Now we have some inputs, having some initial state is nice, but off course worth nothing if we don't do anything with it.
 Let's add a transformation which changes this state into a next state.
-Notice how max_num has no value at the first line. Lets mark this with a '?'.
+Notice how `max_num` has no value at the first line. Lets mark this with a '?'.
 
 {% highlight python linenos %}
 num1, num2 = 3, 5
@@ -80,7 +80,7 @@ Nope, not quite, although this graphic can represent simple linear programs.
 How about statements that influence the _flow_ of a program?
 If you have an if statement the outcome of the if statement should somehow be represented.
 The state of the software will be different when it evaluates to TRUE or FALSE.
-What if we just add 'line_number' as input.
+What if we just add `line_number` as input.
 Think of it as the program counter keeping track of where we are in the program.
 
 {% highlight python linenos %}
