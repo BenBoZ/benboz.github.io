@@ -15,27 +15,27 @@ date: 2017-02-21T07:00:01-04:00
 <style>
 .debuglog table {
   padding: 0; }
-  table tr {
+  .debuglog table tr {
     border-top: 1px solid #cccccc;
     background-color: white;
     margin: 0;
     padding: 0; }
-    table tr:nth-child(2n) {
+    .debuglog table tr:nth-child(2n) {
       background-color: #f8f8f8; }
-    table tr th {
+    .debuglog table tr th {
       font-weight: bold;
       border: 1px solid #cccccc;
       text-align: left;
       margin: 0;
       padding: 6px 13px; }
-    table tr td {
+    .debuglog table tr td {
       border: 1px solid #cccccc;
       text-align: left;
       margin: 0;
       padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
+    .debuglog table tr th :first-child, .debuglog table tr td :first-child {
       margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
+    .debuglog table tr th :last-child, .debuglog table tr td :last-child {
       margin-bottom: 0; }
 </style>
 
@@ -258,6 +258,7 @@ If we expand the diagram of our example we can see all steps the software took t
 | _Hypothesis-1_ | `print` is not needed for getting `3` instead of `5` |
 | _Prediction-1_ | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
 | _Test-1_       | _Prediction-1_ is confirmed |
+{: .debuglog}
 
 With respect to the original call the `print` call is unnecessary since with a debugger we can see the value of `max_num`
 
@@ -314,6 +315,7 @@ Needless to say we should use our _scientific method_ tool and create a hypothes
 | _Test-1_       | _Prediction-1_ is confirmed |
 | _Hypothesis-2_ | The failure only occurs when there is a specific permutation of the inputs. |
 | _Prediction-2_ | Take all permutations of `3`, `5` and `1` and feed all these values through our `find_max` implementation. Only certain permutations will occur in bad situations. |
+{: .debuglog}
 
 Feeding these values to `find_max` indeed results in different outcomes.
 If we take an isolation diagram an placing inputs resulting in correct outcomes
@@ -378,6 +380,7 @@ We can add _Hypothesis-3_ and accompany it with _Prediction-3_:
 | _Test-2_       | Only permutations `3, 5, 1` and `1, 3, 5` result in a failure.
 | _Hypothesis-3_ | The correct maximum number is not determined. |
 | _Prediction-3_ | Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not seen as maximum |
+{: .debuglog}
 
 ![Dependency chain](/images/structured-debugging/dependency-chain.png)
 
