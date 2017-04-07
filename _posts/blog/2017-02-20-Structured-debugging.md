@@ -335,21 +335,22 @@ Maybe the `find_max` function can not determine what number is the maximum.
 
 > __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.
 >
-> __Test__: Follow dependency chain from the beginning untill it is determined which number is the maximum.
+> __Test__: Follow dependency chain from the beginning until it is determined which number is the maximum.
 
 ![Dependency chain](/images/structured-debugging/dependency-chain.png)
 
 If we follow the chain step-by-step trying to disprove our hypothesis, we can see the following:
 
-1. `max_num = 0` : This does not determine the maximum, ignore.
-2. `if num1 > num2 and num1 > num3` : This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
-3. `elif num2 > num1 and num2 > num3` : This checks if `num2` is the maximum,
+__Step 1.__ `max_num = 0` : This does not determine the maximum, ignore.
+
+__Step 2.__ `if num1 > num2 and num1 > num3` : This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
+
+__Step 3.__ `elif num2 > num1 and num2 > num3` : This checks if `num2` is the maximum,
                                         it is correct since it evaluates to
                                         `True` and steps into the `elif` branch
                                         and has as result `line_number = 8`.
 
 The last step contradicts our hypothesis and that means our hypothesis is _disproven_ and not valid.
-
 With this information we can create a new hypothesis and test and continue our forward reasoning:
 
 > __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is determined, but the incorrect output value is assigned.
@@ -358,9 +359,10 @@ With this information we can create a new hypothesis and test and continue our f
 
 Let us continue where we left of on line 8.
 
-4. `max_num = num1`: This assigns `num1` to `max_num` which is wrong!
+__Step 4.__ `max_num = num1`: This assigns `num1` to `max_num` which is wrong!
 
-Eureka! We have proven our hypothesis, but to be sure we should continue our forward reasoning to see if this value is also returned.
+Eureka! We have proven our hypothesis and probably found the defect. To be sure
+we should continue our forward reasoning to see if this value is also returned.
 
 > __Hypothesis__: Given the incorrect assignment `max_num = num1`, `max_num` is returned from the function.
 >
@@ -368,9 +370,11 @@ Eureka! We have proven our hypothesis, but to be sure we should continue our for
 
 This is a very trivial example and only one step.
 
-5. `return max_num`: The infected `max_num` value is return infecting the rest of the program and resulting in the failure.
+__Step 5.__ `return max_num`: The infected `max_num` value is return infecting the rest of the program and resulting in the failure.
 
-In our debugging log we now have the following tested hypotheses, giving a complete description of the failure:
+In our debugging log we now have the following tested hypotheses, giving a complete description of the failure.
+Note that the hypothesis that was disproved is still useful since you put in effort to disprove it.
+If somebody in the future would take your debugging log, he can see you have tested and disproved the hypothesis saving that person effort.
 
 * The failure only occurs when there is a specific permutation of the inputs.
 * ~~Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.~~
