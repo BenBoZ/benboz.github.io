@@ -355,12 +355,16 @@ We can add _Hypothesis-3_ and accompany it with _Prediction-3_:
 
 If we follow the chain step-by-step trying to disprove our hypothesis, we can see the following:
 
-* __Step 1.__ `max_num = 0` : This does not determine the maximum, ignore.
-* __Step 2.__ `if num1 > num2 and num1 > num3` : This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
-* __Step 3.__ `elif num2 > num1 and num2 > num3` : This checks if `num2` is the maximum,
-                                        it is correct since it evaluates to
-                                        `True` and steps into the `elif` branch
-                                        and has as result `line_number = 8`.
+* __Step 1.__ `max_num = 0`
+     This does not determine the maximum, ignore.
+
+* __Step 2.__ `if num1 > num2 and num1 > num3`
+     This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
+
+* __Step 3.__ `elif num2 > num1 and num2 > num3`
+
+     This checks if `num2` is the maximum, it is correct since it evaluates to
+     `True` and steps into the `elif` branch and has as result `line_number = 8`.
 
 The last step contradicts our hypothesis and that means our hypothesis is _disproved_ and not valid.
 With this information we can create a new hypothesis and test and continue our forward reasoning:
