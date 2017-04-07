@@ -276,6 +276,25 @@ Isolation can be applied to:
 
 In a future post I'm writing I want to explain more concrete isolation techniques.
 
+If we apply isolation to the inputs of `find_max` we can take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1`:
+
+* `1`, `3`, `5`
+* `1`, `5`, `3`
+* `3`, `1`, `5`
+* `3`, `5`, `1`
+* `5`, `1`, `3`
+* `5`, `3`, `1`
+
+When we feed all these values through our `find_max` implementation we can create the following isolation diagram:
+
+<figure align="center">
+<img src="/images/structured-debugging/IsolationVennDiagramPermutations.svg" alt="image">
+<figcaption>Isolating inputs of `find_max`</figcaption>
+</figure>
+
+It is now clear that somehow when `5` is in the middle the `find_max` function fails.
+We have now isolated the problem to inputs where the max is in the middle position.
+
 ### After isolation
 
 When you have isolated the problem to the smallest possible part of your software, it is time for pinpointing the defect.
@@ -285,8 +304,8 @@ The literature shows three main strategies to be effective:
 
 * __Binary search / wolf-fencing__:
   * Split the program/procedure in half, see if the system (dependency chain)
-    is infected, if so investigate half before that point, if not infect half
-    after that point.
+    is infected, if so investigate the half before that point, if not inspect
+    the half after that point.
 
 * __(Forward) Topographic__
   * Given a set of inputs and transformations resulting in a failure, follow
