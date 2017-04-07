@@ -12,6 +12,33 @@ image:
 date: 2017-02-21T07:00:01-04:00
 ---
 
+<style>
+table {
+  padding: 0; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+</style>
+
 If you haven't read my other [debugging](/tags/#debugging) post about visualizing software, I advice you to start there. You should now have a proper understanding of what software is and how to visualize it. Also the term _bugs_ is completely clear.
 
 Developers spend up to 50% of their time debugging according to [research by Cambridge university](http://download.microsoft.com/documents/rus/visualstudio/03_CambridgeUniversity_study-time_and_cost_saved_using_RDBs-January_20....pdf).
@@ -356,9 +383,11 @@ We can add _Hypothesis-3_ and accompany it with _Prediction-3_:
 If we follow the chain step-by-step trying to disprove our hypothesis, we can see the following:
 
 * __Step 1.__ `max_num = 0`
+
      This does not determine the maximum, ignore.
 
 * __Step 2.__ `if num1 > num2 and num1 > num3`
+
      This checks if `num1` is the maximum, it is correct since it steps over it and has as result `line_number = 7`.
 
 * __Step 3.__ `elif num2 > num1 and num2 > num3`
