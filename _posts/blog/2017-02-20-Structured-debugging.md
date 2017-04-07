@@ -13,7 +13,7 @@ date: 2017-02-21T07:00:01-04:00
 ---
 
 <style>
-table {
+.debuglog table {
   padding: 0; }
   table tr {
     border-top: 1px solid #cccccc;
@@ -193,6 +193,7 @@ You should choose your own format & medium, but a simple hand drawn 2-column tab
 | What | Description |
 |:-----:|:------|
 | _Problem_ |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+{: .debuglog}
 
 
 ## Find
