@@ -274,18 +274,9 @@ Isolation can be applied to:
 
 * What happens only in the bad/unwanted situation?
 
-In a future post I'm writing I want to explain more concrete isolation techniques.
-
-If we apply isolation to the inputs of `find_max` we can take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1`:
-
-* `1`, `3`, `5`
-* `1`, `5`, `3`
-* `3`, `1`, `5`
-* `3`, `5`, `1`
-* `5`, `1`, `3`
-* `5`, `3`, `1`
-
-When we feed all these values through our `find_max` implementation we can create the following isolation diagram:
+Lets take our example and apply isolation to the inputs of `find_max`.
+We can take all [permutations](https://en.wikipedia.org/wiki/Permutation) of `3`, `5` and `1` and feed all these values through our `find_max` implementation.
+If we place the inputs in an isolation diagram, we can make the following image:
 
 <figure align="center">
 <img src="/images/structured-debugging/IsolationVennDiagramPermutations.svg" alt="image">
@@ -294,6 +285,9 @@ When we feed all these values through our `find_max` implementation we can creat
 
 It is now clear that somehow when `5` is in the middle the `find_max` function fails.
 We have now isolated the problem to inputs where the max is in the middle position.
+We've answered the question: _What happens only in a bad/unwanted situation?_
+
+In a future post I'm writing, I want to explain more concrete isolation techniques.
 
 ### After isolation
 
