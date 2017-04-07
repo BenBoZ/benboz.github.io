@@ -367,9 +367,13 @@ If we follow the chain step-by-step trying to disprove our hypothesis, we can se
 The last step contradicts our hypothesis and that means our hypothesis is _disproved_ and not valid.
 With this information we can create a new hypothesis and test and continue our forward reasoning:
 
-> __Hypothesis__: Given the inputs `3`, `5`, and `1`, the correct maximum number is determined, but the incorrect output value is assigned.
->
-> __Test__: Follow dependency chain from where the maximum number is determined until the return value is calculated.
+|:------------------:|:------------|
+| ~~_Hypothesis-3_~~ | ~~The correct maximum number is not determined.~~ |
+| ~~_Prediction-3_~~ | ~~Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not seen as maximum~~ |
+| _Test-3_           | Wrong, maximum is correctly determined on line 7 |
+| _Hypothesis-4_     | The correct maximum number is determined, but not assigned. |
+| _Prediction-4_     | Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not assigned |
+{: .debuglog}
 
 Let us continue where we left of on line 8.
 
@@ -378,22 +382,38 @@ Let us continue where we left of on line 8.
 Eureka! We have proven our hypothesis and probably found the defect. To be sure
 we should continue our forward reasoning to see if this value is also returned.
 
-> __Hypothesis__: Given the incorrect assignment `max_num = num1`, `max_num` is returned from the function.
->
-> __Test__: Follow dependency chain from where the maximum number is assigned until the value is returned.
+|:------------------:|:------------|
+| _Hypothesis-5_     | The incorrect number that is assigned is returned |
+| _Prediction-5_     | Given the inputs `3`, `5`, and `1`, the incorrect `num1` is assigned and returned from `find_max` |
+{: .debuglog}
 
 This is a very trivial example and only one step.
 
 * __Step 5.__ `return max_num`: The infected `max_num` value is returned infecting the rest of the program and resulting in the failure.
 
-In our debugging log we now have the following tested hypotheses, giving a complete description of the inputs, defect, infection and failure.
+In our debugging log we now have a complete story of our debugging effort, giving a complete description of the inputs, defect, infection and failure.
 Note that the hypothesis that was disproved is still useful since you put in effort to disprove it.
 If somebody in the future would take your debugging log, he can see you have tested and disproved the hypothesis saving that person effort.
 
-* The failure only occurs when there is a specific permutation of the inputs.
-* ~~Given the inputs `3`, `5`, and `1`, the correct maximum number is not determined.~~
-* Given the inputs `3`, `5`, and `1`, the correct maximum number is determined, but the incorrect output value is assigned.
-* Given the incorrect assignment `max_num = num1`, `max_num` is returned from the function.
+| What               | Description |
+|:------------------:|:------------|
+| _Problem_          |  __Given__ the numbers `3`,`5` and `1`, __when__ calling `print(find_max())`, __then__ `3` is printed, __but expected__  `5` to be printed. |
+| _Hypothesis-1_     | `print` is not needed for getting `3` instead of `5` |
+| _Prediction-1_     | When we replace `print` statement with `assert`, `3` is returned instead of `5` |
+| _Test-1_           | _Prediction-1_ is confirmed |
+| _Hypothesis-2_     | The failure only occurs when there is a specific permutation of the inputs. |
+| _Prediction-2_     | Take all permutations of `3`, `5` and `1` and feed all these values through our `find_max` implementation. Only certain permutations will occur in bad situations. |
+| _Test-2_           | Only permutations `1, 5, 3` and `3, 5, 1` result in a failure |
+| ~~_Hypothesis-3_~~ | ~~The correct maximum number is not determined.~~ |
+| ~~_Prediction-3_~~ | ~~Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not seen as maximum~~ |
+| _Test-3_           | Wrong, maximum is correctly determined on line 7 |
+| _Hypothesis-4_     | The correct maximum number is determined, but not assigned. |
+| _Prediction-4_     | Given the inputs `3`, `5`, and `1`, `num2` (`5`) is not assigned |
+| _Test-4_           | On line 8 `num1` is assigned to `max_num` instead of `num2` |
+| _Hypothesis-5_     | The incorrect number that is assigned is returned |
+| _Prediction-5_     | Given the inputs `3`, `5`, and `1`, the incorrect `num1` is assigned and returned from `find_max` |
+| _Test-5_           | The invalid `max_num` is returned |
+{: .debuglog}
 
 ## Fix
 
