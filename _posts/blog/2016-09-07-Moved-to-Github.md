@@ -21,5 +21,5 @@ I first cloned the [jekyll-now](https://github.com/barryclark/jekyll-now/) repo 
 But after a quick DuckDuckGo I found the [so-simple-theme](https://github.com/mmistakes/so-simple-theme) by [mmistakes](https://github.com/mmistakes/), which is a little bit more to my liking.
 
 <div class="fluidMedia" style="height: 1500px;">
-    <iframe src="http://nbviewer.ipython.org/gist/mvdwoord/5a5ea699a48439a4f26f" frameborder="0" > </iframe>
+    <iframe src="https://nbviewer.ipython.org/gist/mvdwoord/5a5ea699a48439a4f26f" frameborder="0" > </iframe>
 </div>
