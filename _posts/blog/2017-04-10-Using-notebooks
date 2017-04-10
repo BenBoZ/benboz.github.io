@@ -1,0 +1,37 @@
+---
+layout: post
+title: "Jupyter Notebooks rock!"
+modified:
+categories: blog
+excerpt: "Why to use Jupyter notebooks"
+tags: []
+comments: true
+share: true
+image:
+  feature: cow.jpg
+date: 2017-10-03T22:33:01-04:00
+---
+
+Work in progress.. 
+
+<style>
+.ipython-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+}
+
+.ipython iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<div class="ipython-container">
+    <iframe src="https://nbviewer.ipython.org/gist/mvdwoord/5a5ea699a48439a4f26f" frameborder="0" height="500" width="100%"> </iframe>
+</div>
