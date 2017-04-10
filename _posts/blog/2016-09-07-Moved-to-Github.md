@@ -39,5 +39,5 @@ But after a quick DuckDuckGo I found the [so-simple-theme](https://github.com/mm
 </style>
 
 <div class="ipython-container">
-    <iframe src="https://nbviewer.ipython.org/gist/mvdwoord/5a5ea699a48439a4f26f" frameborder="0" height=500 width="100%"> </iframe>
+    <iframe src="https://nbviewer.ipython.org/gist/mvdwoord/5a5ea699a48439a4f26f" frameborder="0" height="500" width="100%"> </iframe>
 </div>
