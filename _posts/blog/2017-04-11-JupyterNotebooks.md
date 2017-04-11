@@ -174,7 +174,7 @@ If this is converted into a presentation the slides look like:
 ## Second slide
 ![Second slide](/images/using-notebooks/SecondSlide.png)
 
-# Further reading
+# Conclusion
 Although this does not look very impressive, I would advice you to start
 playing with it to feel the speed of creating great presentations.
 
@@ -182,5 +182,11 @@ You can customize the presenation further but that is outside the scope of this 
 See the ["Configure your own
 options"](https://github.com/damianavila/RISE#configure-your-own-options)
 section at the RISE repository.
+
+## Drawbacks
+Some major drawbacks of the current C-kernel are that you [cannot add linker-flags](https://github.com/brendan-rius/jupyter-c-kernel/issues/10) and it is not possible to split your implementation over multiple cells. You always need a complete and valid C program (with `main` function) for the compiling to succeed.
+
+
+
 
 
