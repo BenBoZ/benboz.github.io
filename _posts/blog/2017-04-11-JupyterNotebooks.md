@@ -9,7 +9,7 @@ comments: true
 share: true
 image:
   feature: using-notebooks/jupyter-notebook-header.jpg
-date: 2017-03-10T22:33:01-04:00
+date: 2017-04-11T14:11:01-04:00
 ---
 
 Once in a while you will have to give a presentation showing code.  My normal
