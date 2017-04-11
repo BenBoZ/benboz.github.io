@@ -85,12 +85,12 @@ pressing `ctrl`-`c` twice in the terminal it is running.
 # Jupyter C kernel
 
 Jupyter notebooks support a lot of languages (see the [complete list of
-kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels).
+kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)).
 
-For this post I want to focus on `c` since that is the main language I use.
+For this post I want to focus on _c_ since that is the main language I use.
 I've used the [jupyter-c-kernel](https://github.com/brendan-rius/jupyter-c-kernel) succesfully.
 
-This kernel allows you to compile `c` using `gcc` directly from the Jupyter notebook.
+This kernel allows you to compile _c_ using `gcc` directly from the Jupyter notebook.
 
 ## Setup
 To install it follow the instructions
@@ -111,7 +111,9 @@ After everything is installed you can once again start jupyter notebook and crea
 jupyter notebook --no-browser --ip=0.0.0.0 --port=8080
 ```
 
-Below you can see a small C notebook example.
+Below you can see a small C notebook example. Once you have typed in the code
+in the code cell, and press `shift`-`enter` the code will be compiled and run
+by the `gcc` kernel.
 
 ![Hello world c notebook](/images/using-notebooks/HelloWorldNotebook.png)
 
@@ -175,3 +177,10 @@ If this is converted into a presentation the slides look like:
 # Further reading
 Although this does not look very impressive, I would advice you to start
 playing with it to feel the speed of creating great presentations.
+
+You can customize the presenation further but that is outside the scope of this article.
+See the ["Configure your own
+options"](https://github.com/damianavila/RISE#configure-your-own-options)
+section at the RISE repository.
+
+
