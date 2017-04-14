@@ -147,7 +147,7 @@ with which you can open your presentation.
 If you press it your presentation is started.
 
 # Configuring the presentation
-We now have a presentation, but off course we want to have some control over
+We now have a presentation, but of course we want to have some control over
 the contents. A notebook consists of cells which can be code or markdown. To
 control how they are shown in your presentation you can use the cell toolbar.
 Open it from the view menu as shown below:
