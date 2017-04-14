@@ -184,7 +184,11 @@ options"](https://github.com/damianavila/RISE#configure-your-own-options)
 section at the RISE repository.
 
 ## Drawbacks
-Some major drawbacks of the current C-kernel are that you [cannot add linker-flags](https://github.com/brendan-rius/jupyter-c-kernel/issues/10) and it is not possible to split your implementation over multiple cells. You always need a complete and valid C program (with `main` function) for the compiling to succeed.
+Some major drawbacks of the current C-kernel are that:
+* ~~you [cannot add linker-flags](https://github.com/brendan-rius/jupyter-c-kernel/issues/10)~~ (Fixed it in [PR #26](https://github.com/brendan-rius/jupyter-c-kernel/pull/26))
+* ~~you [cannot provide args](https://github.com/brendan-rius/jupyter-c-kernel/issues/14)~~ (Fixed it in [PR #27](https://github.com/brendan-rius/jupyter-c-kernel/pull/27))
+* you [cannot provide input from stdin](https://github.com/brendan-rius/jupyter-c-kernel/issues/3) 
+* it is [not possible to split your implementation over multiple cells](https://github.com/brendan-rius/jupyter-c-kernel/issues/28). You always need a complete and valid C program (with `main` function) for the compiling to succeed.
 
 
 
