@@ -142,7 +142,7 @@ These will be a key concept for my future [debugging posts](/tags/#debugging).
 You must be thinking by yourself:
  _OK, but I'm not going to draw these diagrams by hand. I have better things to do!_
 Off course you shouldn't! I created a little python script that can generate these images from python with trace information.
-It is currently in a proof-of-concept stage, so please be gentile on me :grin:.
+It is currently in a proof-of-concept stage, so please be gentle on me :grin:.
 It should be do-able to extend the tool to c using gdb, but that is on my _looooooooong_ to-do list.
 Head over to [the PrintState repo](https://www.github.com/spoorcc/PrintState) and check it out.
 
